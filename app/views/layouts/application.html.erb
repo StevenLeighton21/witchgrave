@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WitchHouse</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+   <title>Witch House Software</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id='top'>
+      <%= link_to 'Home', root_path %> 
+    </div>
 
-<%= yield %>
+    <div id='middle'>
+      <%= yield %>
+    </div>
 
-</body>
+  </body>
 </html>
