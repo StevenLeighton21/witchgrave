@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
 def hello()
-	render text: "Hello world"
+	render text: "Hello world branch"
 end
 
 end
