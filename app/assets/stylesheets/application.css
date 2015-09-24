@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 body {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
@@ -167,9 +168,6 @@ pre {
 	margin-top: 20px;
 	margin-bottom: 10px; 
 	}
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 /* mixins, variables, etc. */
 
