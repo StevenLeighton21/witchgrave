@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :campaign
 	belongs_to :campaign
 
+	before_save { self.email = email.downcase }
 	validates :name, length: {maximum: 128},
 				 	 presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -10,5 +11,6 @@ class User < ActiveRecord::Base
 	                  uniqueness: { case_sensitive: false}
 
 	has_secure_password
+	validates :password, presence: true, length: { minimum: 6 }
 
 end
