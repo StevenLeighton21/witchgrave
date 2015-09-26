@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
     if @user.update_attributes(user_params)
       # Handle a successful update.
       flash[:success] = "Profile updated"
@@ -39,16 +40,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        log_in @user
-        flash[:success] = "Account created successfully"
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      log_in @user
+      flash[:success] = "Account created successfully"
+      redirect_to @user
+        
+    else
+      render'new'
     end
   end
 
