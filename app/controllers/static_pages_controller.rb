@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
+  def landing
+  end
 end

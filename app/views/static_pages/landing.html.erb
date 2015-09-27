@@ -1,0 +1,24 @@
+<div class="center jumbotron">
+  <h1>My Campaigns</h1>
+
+  <h2>
+    Campaign management app
+  </h2>
+
+  <%= link_to 'Create Campaign', create_campaign_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<h2>My current campaigns</h2>
+
+<% campaigns_for_user(current_user).each do |campaign|%>
+<h1>
+  <%= campaign.name %>
+</h1>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= campaign.description %>
+</p>
+<% end %>
+

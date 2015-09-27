@@ -26,15 +26,13 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
+    if @campaign.save
 
-    respond_to do |format|
-      if @campaign.save
-        format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
-        format.json { render :show, status: :created, location: @campaign }
-      else
-        format.html { render :new }
-        format.json { render json: @campaign.errors, status: :unprocessable_entity }
-      end
+      flash[:success] = "New campaign created successfully"
+      redirect_to root_path
+        
+    else
+      render'new'
     end
   end
 
@@ -59,6 +57,12 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def campaigns_for_user(user)
+    Campaign.find_each do |c|
+      c.creator_id || c.member_id == user.id
     end
   end
 
