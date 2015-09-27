@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/landing'
 
-  resources :campaigns,          only: [:create, :destroy]
+  resources :campaigns
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get    'signup'  => 'users#new'
+  get    'landing' => 'users#show'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  get    'create_campaign' => 'campaign#new'
+  get    'create_campaigns' => 'campaigns#new'
+  get    'edit_campaign' => 'campaigns#edit'
+  delete 'delete_campaign' => 'campaigns#destroy'
 end

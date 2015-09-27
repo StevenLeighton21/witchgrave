@@ -10,14 +10,14 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-<% if @user.campaign.any? %>
+<% if @user.campaigns.any? %>
 
 <ol class="campaigns">
-  <%= render @campaign %>
+  <%= render @campaigns %>
 </ol>
-<%= will_paginate @campaign %>
+<%= will_paginate @campaigns %>
 
 <% end %>
 <div class="container">
-<%= link_to "Create New Campaign", create_campaign_path, class: "btn btn-lg btn-primary" %>
+<%= link_to "Create New campaigns", create_campaigns_path, class: "btn btn-lg btn-primary" %>
 </div>

@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @campaign = @user.campaign.paginate(page: params[:page])
+    @campaigns = @user.campaigns.paginate(page: params[:page])
   end
 
   def admin_user
-    redirect_to(@user) unless current_user.admin?
+    redirect_to(root_url) unless current_user.admin?
   end
 
   # GET /users/new

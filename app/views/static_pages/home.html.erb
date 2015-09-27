@@ -2,12 +2,13 @@
   <h1>Frostgrave</h1>
 
   <h2>
-    Campaing management app
+    Campaign management app
   </h2>
   <% if current_user == nil %>
   	<%= link_to "Create account", signup_path, class: "btn btn-lg btn-primary" %>
   <% else %>
-  	<h2> Campaigns </h2>
+  	
+  	<% yield current_user %>
   <% end %>
 </div>
 

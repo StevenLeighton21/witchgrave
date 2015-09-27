@@ -23,6 +23,6 @@ User.create!(name:  "Esteven",
 users = User.order(:created_at).take(6)
 50.times do |n|
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.campaign.create!(name: "campaign #{n+1}", description: content) }
+  users.each { |user| user.campaigns.create!(name: "campaigns #{n+1}", description: content) }
 end
 end

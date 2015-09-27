@@ -1,24 +1,24 @@
 <div class="center jumbotron">
-  <h1>My Campaigns</h1>
+  <h1>My campaigns</h1>
 
   <h2>
-    Campaign management app
+    campaigns management app
   </h2>
 
-  <%= link_to 'Create Campaign', create_campaign_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to 'Create campaigns', create_campaigns_path, class: "btn btn-lg btn-primary" %>
 </div>
 
 <h2>My current campaigns</h2>
 
-<% campaigns_for_user(current_user).each do |campaign|%>
+<% campaigns_for_user(current_user).each do |campaigns|%>
 <h1>
-  <%= campaign.name %>
+  <%= campaigns.name %>
 </h1>
 
 
 <p>
   <strong>Description:</strong>
-  <%= campaign.description %>
+  <%= campaigns.description %>
 </p>
 <% end %>
 
