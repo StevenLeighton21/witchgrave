@@ -5,12 +5,9 @@
     Campaing management app
   </h2>
   <% if current_user == nil %>
-
-  <%= link_to "Create account", signup_path, class: "btn btn-lg btn-primary" %>
+  	<%= link_to "Create account", signup_path, class: "btn btn-lg btn-primary" %>
   <% else %>
-	<h2>My current campaigns</h2>
-
-
+  	<h2> Campaigns </h2>
   <% end %>
 </div>
 

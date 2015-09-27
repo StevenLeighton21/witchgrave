@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @campaign = @user.campaign.paginate(page: params[:page])
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(@user) unless current_user.admin?
   end
 
   # GET /users/new
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to root_path
+      redirect_to @user
     else
       render 'edit'
     end

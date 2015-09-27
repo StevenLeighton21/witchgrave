@@ -1,10 +1,10 @@
 class CreateCampaigns < ActiveRecord::Migration
   def change
     create_table :campaigns do |t|
-      t.integer :creator_id
       t.string :name
       t.text :description
-      t.integer :member_id
+      t.references :user, index: true, foreign_key: true
+      t.integer :member
 
       t.timestamps null: false
     end

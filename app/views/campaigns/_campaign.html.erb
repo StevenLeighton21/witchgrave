@@ -1,0 +1,9 @@
+<li id="campaign-<%= campaign.id %>">
+  
+  <span class="user"><%= link_to campaign.user.name, campaign.user %></span>
+  <span class="content"><%= campaign.name %></span>
+  <span class="content"><%= campaign.description %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(campaign.created_at) %> ago.
+  </span>
+</li>

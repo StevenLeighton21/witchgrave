@@ -1,9 +1,8 @@
 class Campaign < ActiveRecord::Base
-	belongs_to :user
-	has_many :user
-	validates :description, length: { maximum: 500},
-							presence: true
-	validates :name, length: {maximum: 128},
-					  presence: true
-	
+  belongs_to :user
+  default_scope -> { order(created_at: :desc) }
+
+  validates :user_id, presence: true
+  validates :name, presence: true, length:{maximum: 255}
+
 end
