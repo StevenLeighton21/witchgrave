@@ -1,0 +1,16 @@
+<% provide(:title, 'All Campaigns') %>
+<h1>All Campaigns</h1>
+
+<%= will_paginate %>
+
+<ul class="campaigns">
+  <% @campaigns.each do |campaign| %>
+    <li>
+      
+      <%= link_to campaign.name, campaign %>
+      </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
+

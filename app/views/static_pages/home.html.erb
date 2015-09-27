@@ -8,7 +8,9 @@
   	<%= link_to "Create account", signup_path, class: "btn btn-lg btn-primary" %>
   <% else %>
   	
-  	<% yield current_user %>
+  	<%= link_to "My Dashboard", current_user, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Join Existing Campaign", campaigns_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Create New Campaign", create_campaigns_path, class: "btn btn-lg btn-primary" %>
   <% end %>
 </div>
 

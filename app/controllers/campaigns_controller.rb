@@ -10,6 +10,15 @@ class CampaignsController < ApplicationController
     @campaigns = Campaign.find(params[:id])
   end
 
+  def index
+    @campaigns = Campaign.paginate(page: params[:page])
+  end
+
+  def show
+    @campaigns = Campaign.find(params[:id])
+    
+  end
+
   def update
     @campaigns = Campaign.find(params[:id])
     if @campaigns.update_attributes(campaigns_params)
@@ -24,7 +33,7 @@ class CampaignsController < ApplicationController
     @campaigns = Campaign.new(campaigns_params)
 
     if @campaigns.save
-      flash[:success] = "Campaigns created successfully"
+      flash[:success] = "Campaign created successfully"
       redirect_to current_user
         
     else
@@ -34,7 +43,7 @@ class CampaignsController < ApplicationController
 
   def destroy
     campaigns.find(params[:id]).destroy
-    flash[:success] = "Campaigns deleted"
+    flash[:success] = "Campaign deleted"
     redirect_back_or current_user
   end
 
