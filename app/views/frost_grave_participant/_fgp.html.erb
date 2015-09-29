@@ -8,7 +8,7 @@
   </span>
       <% if current_user?(campaign.user) %>
       <%= link_to "edit", edit_campaign_path %>
-      <%= link_to "join", new_frost_grave_participant_path %>
+      <%= link_to "join", create_fg_participant_path %>
       <%= link_to "delete", delete_campaign_path, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>

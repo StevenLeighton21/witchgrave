@@ -1,5 +1,6 @@
 class Campaign < ActiveRecord::Base
   belongs_to :user
+  has_many   :frost_grave_participant
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true

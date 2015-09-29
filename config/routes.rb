@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :campaigns
   resources :users
+  resources :frost_grave_participants
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  get    'create_fg_participant' => 'frost_grave_participant#new'
   get    'create_campaigns' => 'campaigns#new'
   get    'edit_campaign' => 'campaigns#edit'
   delete 'delete_campaign' => 'campaigns#destroy'
