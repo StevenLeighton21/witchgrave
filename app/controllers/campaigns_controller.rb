@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
 
   def edit
     @campaigns = Campaign.find(params[:id])
+
   end
 
   def index
@@ -16,7 +17,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaigns = Campaign.find(params[:id])
-    
+    @participants =  @campaigns.frost_grave_participants.all
   end
 
   def update

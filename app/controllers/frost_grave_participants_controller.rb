@@ -20,21 +20,25 @@ class FrostGraveParticipantsController < ApplicationController
   end
 
   def update
+    @campaign = Campaign.find()
     @participant = FrostGraveParticipant.find(params[:id])
-    if @participant.update_attributes(campaigns_params)
+
+    if @participant.update_attributes(frost_grave_participant_params)
       flash[:success] = "Warband updated"
-      redirect_to current_campaign
+      redirect_to current_user
     else
       render 'edit'
     end
   end
 
   def create
-    @participant = FrostGraveParticipant.new(frost_grave_participant_params)
 
+    @campaign = Campaign.find(params[:frost_grave_participant][:campaign_id])
+    @participant = @campaign.frost_grave_participants.build(frost_grave_participant_params)
+    
     if @participant.save
       flash[:success] = "Warband created successfully"
-      redirect_to current_campaign
+      redirect_to campaign_path(@campaign.id)
         
     else
       render'new'
@@ -44,24 +48,25 @@ class FrostGraveParticipantsController < ApplicationController
   def destroy
     frost_grave_participants.find(params[:id]).destroy
     flash[:success] = "Warband deleted"
-    redirect_back_or current_campaign
+    redirect_back_or current_user
   end
 
   private
     def frost_grave_participant_params
       params.require(:frost_grave_participant).permit(
         :name,
+        :campaign_id,
         :wizard_name,
         :wizard_weapon,
         :apprentice_name,
         :apprentice_weapon,
         :wizard_spells
-        ).merge(user_id: current_user.id, campaign_id: current_campaign.id)
+        ).merge(user_id: current_user.id)
     end
 
     def correct_user
-      @campaigns = current_user.campaigns.find_by(id: params[:id])
-      redirect_to current_user if @campaigns.nil?
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 
 end

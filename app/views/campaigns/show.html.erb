@@ -10,5 +10,10 @@
   <%= @campaigns.description %>
 </p>
 
-<%= link_to "Join this Campaign", create_frost_grave_participants_path, class: "btn btn-lg btn-primary" %>
+<h2>Warbands in this campaign:</h2>
+
+<% @participants.each do |p| %>
+<p><%= link_to p.name, frost_grave_participant_path(p)%></p>
+<% end %>
+<%= link_to "Join this Campaign", new_frost_grave_participant_path(:c_id => @campaigns.id), class: "btn btn-lg btn-primary" %>
 </div>

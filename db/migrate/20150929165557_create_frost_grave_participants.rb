@@ -1,8 +1,7 @@
 class CreateFrostGraveParticipants < ActiveRecord::Migration
   def change
     create_table :frost_grave_participants do |t|
-      t.references :user, index: true, foreign_key: true
-      t.belongs_to :campaigns, index: true, foreign_key: true
+      t.references :campaign, index: true, foreign_key: true
       t.string :name
       t.string :wizard_name
       t.string :wizard_weapon
@@ -19,6 +18,6 @@ class CreateFrostGraveParticipants < ActiveRecord::Migration
       t.string :warband_member_8
       t.timestamps null: false
     end
-    add_index :frost_grave_participants, [:user_id, :campaigns_id]
+    add_index :frost_grave_participants, [:campaign_id, :created_at]
   end
 end

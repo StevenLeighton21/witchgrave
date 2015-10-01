@@ -37,10 +37,10 @@
   <%= f.text_field :wizard_spells %>
 </div>
 
-
+<%= f.hidden_field :campaign_id, :value => params[:c_id] %>
 
  <div class="actions">
-      <%= f.submit "Create Campaign", class: "btn btn-primary" %>
+      <%= f.submit "Create Warband", class: "btn btn-primary" %>
   </div>
 
 
