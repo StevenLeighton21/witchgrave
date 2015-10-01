@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'static_pages/home'
-
+  get 'static_pages/contact'
   get 'static_pages/help'
   get 'static_pages/landing'
 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'static_pages#home'
 
+  get    'help'    => 'static_pages#help'
   get    'signup'  => 'users#new'
   get    'landing' => 'users#show'
   get    'login'   => 'sessions#new'

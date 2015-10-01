@@ -1,7 +1,7 @@
 <li id="campaign-<%= campaign.id %>">
   
   <span class="user"><%= link_to campaign.user.name, campaign.user %></span>
-  <span class="content"><%= campaign.name %></span>
+  <span class="content"><%= link_to campaign.name, campaign %></span>
   <span class="content"><%= campaign.description %></span>
   
   <span class="timestamp">
