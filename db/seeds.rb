@@ -10,5 +10,3 @@ User.create!(name:  "Steven",
              password:              "frostgr@ve",
              password_confirmation: "frostgr@ve",
              admin: true)
-
-end
