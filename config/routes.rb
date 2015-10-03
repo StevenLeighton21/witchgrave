@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :campaigns
   resources :users
   resources :frost_grave_participants
+  resources :spells
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -17,15 +18,18 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'static_pages#home'
 
-  get    'help'    => 'static_pages#help'
-  get    'signup'  => 'users#new'
-  get    'landing' => 'users#show'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  get    'create_spell' => 'spells#new'
+  get    'edit_spell'   => 'spells#edit'
+  delete 'delete_spell' => 'spells#destroy'
+  get    'help'         => 'static_pages#help'
+  get    'signup'       => 'users#new'
+  get    'landing'      => 'users#show'
+  get    'login'        => 'sessions#new'
+  post   'login'        => 'sessions#create'
+  delete 'logout'       => 'sessions#destroy'
   get    'create_fg_participant' => 'frost_grave_participant#new'
-  get    'create_campaigns' => 'campaigns#new'
-  get    'edit_campaign' => 'campaigns#edit'
-  delete 'delete_campaign' => 'campaigns#destroy'
+  get    'create_campaigns'      => 'campaigns#new'
+  get    'edit_campaign'         => 'campaigns#edit'
+  delete 'delete_campaign'       => 'campaigns#destroy'
   delete 'delete_frostgrave_participant' => 'frost_grave_participants#destroy'
 end

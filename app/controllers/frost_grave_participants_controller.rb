@@ -17,6 +17,7 @@ class FrostGraveParticipantsController < ApplicationController
   def show
     @participant = FrostGraveParticipant.find(params[:id])
     @soldiers    = Soldier.all
+    @spells      = @participant.spells.all
   end
 
   def update
@@ -43,6 +44,7 @@ class FrostGraveParticipantsController < ApplicationController
     end
   end
 
+
   def destroy
     @participant = FrostGraveParticipant.find(params[:id])
     @campaign = @participant.campaign
@@ -58,9 +60,9 @@ class FrostGraveParticipantsController < ApplicationController
         :campaign_id,
         :wizard_name,
         :wizard_weapon,
+        :wizard_discipline,
         :apprentice_name,
         :apprentice_weapon,
-        :wizard_spells,
         :soldier_1_name,
         :soldier_1_type,
         :soldier_2_name,
@@ -91,7 +93,7 @@ class FrostGraveParticipantsController < ApplicationController
         :wizard_weapon,
         :apprentice_name,
         :apprentice_weapon,
-        :wizard_spells,
+        :wizard_discipline,
         :soldier_1_name,
         :soldier_1_type,
         :soldier_2_name,

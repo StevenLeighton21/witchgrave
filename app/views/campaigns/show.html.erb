@@ -16,4 +16,9 @@
 <p><%= link_to p.name, frost_grave_participant_path(p, :c_id => @campaigns.id)%></p>
 <% end %>
 <%= link_to "Join this Campaign", new_frost_grave_participant_path(:c_id => @campaigns.id), class: "btn btn-lg btn-primary" %>
+<% if @campaigns.user_id == current_user.id %>
+	<%= link_to "Edit Campaign", edit_campaign_path(@campaigns.id), class: "btn btn-lg btn-primary" %>
+	<%= link_to "Delete Campaign", delete_campaign_path(:id => @campaigns.id), method: :delete,
+                                       data: { confirm: "You sure?" } , class: "btn btn-lg btn-primary"%>
+<% end %>
 </div>

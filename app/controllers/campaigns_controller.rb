@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
  before_action :logged_in_user, only: [:create, :destroy]
- before_action :correct_user,   only: :destroy
+
 
   def new
     @campaigns = Campaign.new
@@ -43,7 +43,7 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
-    campaigns.find(params[:id]).destroy
+    Campaign.find(params[:id]).destroy
     flash[:success] = "Campaign deleted"
     redirect_back_or current_user
   end

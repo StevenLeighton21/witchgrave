@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003084639) do
+ActiveRecord::Schema.define(version: 20151003154818) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20151003084639) do
     t.string   "name"
     t.string   "wizard_name"
     t.string   "wizard_weapon"
-    t.text     "wizard_spells"
     t.string   "apprentice_name"
     t.string   "apprentice_weapon"
     t.datetime "created_at",        null: false
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151003084639) do
     t.string   "soldier_10_name"
     t.string   "soldier_10_type"
     t.string   "soldier_10_item"
+    t.string   "wizard_discipline"
   end
 
   add_index "frost_grave_participants", ["campaign_id", "created_at"], name: "index_frost_grave_participants_on_campaign_id_and_created_at"
@@ -87,6 +87,20 @@ ActiveRecord::Schema.define(version: 20151003084639) do
     t.datetime "updated_at", null: false
     t.string   "class_name"
   end
+
+  create_table "spells", force: :cascade do |t|
+    t.integer  "frost_grave_participant_id"
+    t.string   "discipline"
+    t.string   "name"
+    t.integer  "casting_value"
+    t.string   "range"
+    t.text     "description"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "spells", ["frost_grave_participant_id", "created_at"], name: "index_spells_on_frost_grave_participant_id_and_created_at"
+  add_index "spells", ["frost_grave_participant_id"], name: "index_spells_on_frost_grave_participant_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

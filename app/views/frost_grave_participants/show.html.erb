@@ -13,6 +13,31 @@
     And their apprentice:  <%= @participant.apprentice_name %>
   </p>
 <% end %>
+<h2>Spells</h2>
+<% if @spells.any? %>
+  <table>
+    <tr>
+      <th>Discipline</th>
+      <th>Spell Name</th>
+      <th>Casting Value</th>
+      <th>Range</th>
+      <th>Description</th>
+    </tr>
+    <% @spells.each do |spell| %>
+      <tr> 
+        <td><%= spell.discipline %></td> 
+        <td><%= spell.name %></td> 
+        <td><%= spell.casting_value %></td> 
+        <td><%= spell.range %></td> 
+        <td><%= spell.description %></td> 
+        <td><%= link_to 'Update', edit_spell_path(spell.id) %> </td>
+        <td><%= link_to 'Delete', delete_spell_path(:id => spell.id), method: :delete,
+                                       data: { confirm: "You sure?" } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id) %>
 <h2>Soldiers</h2>
 <table>
   <tr>

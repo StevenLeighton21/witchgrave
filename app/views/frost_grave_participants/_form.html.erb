@@ -19,6 +19,13 @@
   <%= f.label :wizard_name %>
   <%= f.text_field :wizard_name %>
 </div>
+
+<div class="textarea">
+  <%= f.label :wizard_discipline %>
+  <%= select :frost_grave_participant, :wizard_discipline, SpellsController::DISCIPLINES, {selected: 1} %>
+</div>
+
+
 <div class="field">
   <%= f.label :wizard_weapon %>
   <%= f.text_field :wizard_weapon %>
@@ -30,11 +37,6 @@
 <div class="field">
   <%= f.label :apprentice_weapon %>
   <%= f.text_field :apprentice_weapon %>
-</div>
-
-<div class="textarea">
-  <%= f.label :wizard_spells %>
-  <%= f.text_field :wizard_spells %>
 </div>
 
 <div class="field">

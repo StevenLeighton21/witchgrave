@@ -7,10 +7,5 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(campaign.created_at) %> ago.
   </span>
-      <% if current_user?(campaign.user) %>
-      <%= link_to "edit", edit_campaign_path(campaign.id) %>
       <%= link_to "join", new_frost_grave_participant_path(:c_id => campaign.id) %>
-      <%= link_to "delete", delete_campaign_path, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
 </li>
