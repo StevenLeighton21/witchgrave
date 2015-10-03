@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get    'create_campaigns' => 'campaigns#new'
   get    'edit_campaign' => 'campaigns#edit'
   delete 'delete_campaign' => 'campaigns#destroy'
+  delete 'delete_frostgrave_participant' => 'frost_grave_participants#destroy'
 end

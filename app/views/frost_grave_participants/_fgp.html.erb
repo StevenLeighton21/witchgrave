@@ -1,15 +1,116 @@
-<li id="campaign-<%= campaign.id %>">
-  
-  <span class="user"><%= link_to campaign.user.name, campaign.user %></span>
-  <span class="content"><%= campaign.name %></span>
-  <span class="content"><%= campaign.description %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(campaign.created_at) %> ago.
-  </span>
-      <% if current_user?(campaign.user) %>
-      <%= link_to "edit", edit_campaign_path %>
-      <%= link_to "join", create_fg_participant_path %>
-      <%= link_to "delete", delete_campaign_path, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
-</li>
+<%= form_for(@participant) do |f| %>
+  <% if @participant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@participant.errors.count, "error") %> prohibited this warband from being saved:</h2>
+
+      <ul>
+      <% @participant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :wizard_name %>
+  <%= f.text_field :wizard_name %>
+</div>
+<div class="field">
+  <%= f.label :wizard_weapon %>
+  <%= f.text_field :wizard_weapon %>
+</div>
+<div class="field">
+  <%= f.label :apprentice_name %>
+  <%= f.text_field :apprentice_name %>
+</div>
+<div class="field">
+  <%= f.label :apprentice_weapon %>
+  <%= f.text_field :apprentice_weapon %>
+</div>
+
+<div class="textarea">
+  <%= f.label :wizard_spells %>
+  <%= f.text_field :wizard_spells %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_1_name %>
+  <%= f.text_field :soldier_1_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_1_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_2_name %>
+  <%= f.text_field :soldier_2_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_2_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_3_name %>
+  <%= f.text_field :soldier_3_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_3_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_4_name %>
+  <%= f.text_field :soldier_4_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_4_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_5_name %>
+  <%= f.text_field :soldier_5_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_5_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_6_name %>
+  <%= f.text_field :soldier_6_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_6_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_7_name %>
+  <%= f.text_field :soldier_7_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_7_type, Soldier.all, :class_name, :class_name, prompt: true %>%>
+
+<div class="field">
+  <%= f.label :soldier_8_name %>
+  <%= f.text_field :soldier_8_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_8_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_9_name %>
+  <%= f.text_field :soldier_9_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_9_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+<div class="field">
+  <%= f.label :soldier_10_name %>
+  <%= f.text_field :soldier_10_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_10_type, Soldier.all, :class_name, :class_name, prompt: true %>
+
+
+ <div class="actions">
+      <%= f.submit "Update Warband", class: "btn btn-primary" %>
+  </div>
+
+
+<% end %>

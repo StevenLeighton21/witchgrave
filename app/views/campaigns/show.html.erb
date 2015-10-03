@@ -13,7 +13,7 @@
 <h2>Warbands in this campaign:</h2>
 
 <% @participants.each do |p| %>
-<p><%= link_to p.name, frost_grave_participant_path(p)%></p>
+<p><%= link_to p.name, frost_grave_participant_path(p, :c_id => @campaigns.id)%></p>
 <% end %>
 <%= link_to "Join this Campaign", new_frost_grave_participant_path(:c_id => @campaigns.id), class: "btn btn-lg btn-primary" %>
 </div>

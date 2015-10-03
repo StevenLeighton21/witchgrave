@@ -1,32 +1,6 @@
-<% provide(:title, "Edit Campaign") %>
-<h1>Update your Campaign</h1>
+<% provide(:title, "Update Warband") %>
+<h1>Update your Warband</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@campaigns) do |f| %>
-        <% if @campaigns.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campaigns.errors.count, "error") %> prohibited this campaigns from being saved:</h2>
+<%= render 'fgp' %>
 
-      <ul>
-      <% @campaigns.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-      <div class="field">
-       <%= f.label :name %>
-       <%= f.text_field :name, class: 'form-control'%>
-      </div>
-     <div class="field">
-        <%= f.label :description %>
-       <%= f.text_field :description, class: 'form-control'%>
-      </div>
-
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
-
-  </div>
 </div>
