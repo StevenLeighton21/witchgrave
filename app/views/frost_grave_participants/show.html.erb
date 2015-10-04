@@ -84,14 +84,18 @@
         <td><%= spell.casting_value %></td> 
         <td><%= spell.range %></td> 
         <td><%= spell.description %></td> 
-        <td><%= link_to 'Update', edit_spell_path(spell.id) %> </td>
-        <td><%= link_to 'Delete', delete_spell_path(:id => spell.id), method: :delete,
+        <% if @participant.user_id == current_user.id %>
+          <td><%= link_to 'Update', edit_spell_path(spell.id) %> </td>
+          <td><%= link_to 'Delete', delete_spell_path(:id => spell.id), method: :delete,
                                        data: { confirm: "You sure?" } %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
 <% end %>
-<%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id) %>
+<% if @participant.user_id == current_user.id %>
+  <%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id) %>
+<% end %>
 
 <h2> Item Stash  ----  Current Gold Cache: <%= @participant.gold_cache %></h2>
 <div><p><%= @participant.item_stash %></p></div>
@@ -100,11 +104,15 @@
 <% if @base != nil %>
   <p><%= @base.location %></p>
   <p><%= @base.effects %></p>
-  <%= link_to 'Change', edit_base_path(:id => @base.id) %> 
-  <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
+  <% if @participant.user_id == current_user.id %>
+   <%= link_to 'Change', edit_base_path(:id => @base.id) %> 
+   <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
                                        data: { confirm: "You sure?" } %>
+  <% end %>
 <% else %>
-  <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-primary"%>
+  <% if @participant.user_id == current_user.id %>
+    <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-primary"%>
+  <% end %>
 <% end %>
 
 <h2>Soldiers</h2>
