@@ -170,3 +170,39 @@ Soldier.create!(class_name: "Marksman",
                 health:     12,
                 cost:       100,
                 notes:      "Crossbow, Hand Weapon, Mail armour")
+
+Location.create!(name: "Inn",
+                 effects: "Maximum warband size (including the wizard) is increased to 11")
+
+Location.create!(name: "Temple",
+                 effects: "Spellcasters receive a +1 bonus to cast attempts of Miraculous Cure and Restore Life spells")
+
+Location.create!(name: "Crypt",
+                 effects: "Spellcasters receive a +2 bonus to cast attempts of Raise Zombie spells")
+
+Location.create!(name: "Tower",
+                 effects: "Spellcasters receive a +2 bonus to cast attempts of Reveal Secret spells")
+
+Location.create!(name: "Treasury",
+                 effects: "After each game the player may roll a D20 and gain the following result:
+                 1 - Warband member of their choice must miss the next game
+                 2 to 18 - Add this number of GC to the warband gold cache
+                 19 - Add 100GC to the warband gold cache
+                 20 - Gain a treasure token")
+
+Location.create!(name: "Brewery",
+                 effects: "Soldiers cost 5GC less to hire, and after each game the warband earns an additional 10GC")
+
+Location.create!(name: "Library",
+                 effects: "After each game the player may roll a D20 and gain the following result:
+                 1 to 16 - Nothing
+                 17 to 19 - Add a random Scroll to the item cache
+                 20 - Add a random Grimoire to the item cache")
+
+Location.create!(name: "Laboratory",
+                 effects: "After each game the Wizard gains 20 XP")
+
+
+
+
+

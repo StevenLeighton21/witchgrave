@@ -6,12 +6,66 @@
 
 <div>
 <p>
-  Led by the <%= @participant.wizard_discipline %>:  <%= @participant.wizard_name %>
+  <strong>Led by the <%= @participant.wizard_discipline %>:</strong>  <%= @participant.wizard_name %> <strong> Level: </strong> <%= @participant.wizard_level %> <strong> XP: </strong> <%= @participant.wizard_xp %> 
 </p>
+<table>
+  <tr>
+    <th>Move</th>
+    <th>Fight</th>
+    <th>Shoot</th>
+    <th>Armour</th>
+    <th>Will</th>
+    <th>Health</th>
+    <th>Inventory</th>
+  </tr>
+      <tr>
+      <td><%= @participant.wizard_move %></td>
+      <td><%= @participant.wizard_fight %></td>
+      <td><%= @participant.wizard_shoot %></td>
+      <td><%= @participant.wizard_armour %></td>
+      <td><%= @participant.wizard_will %></td>
+      <td><%= @participant.wizard_health %></td>
+      <td><%= @participant.wizard_inventory_1 %> <%= @participant.wizard_inventory_2 %> <%= @participant.wizard_inventory_3 %>
+          <%= @participant.wizard_inventory_4 %> <%= @participant.wizard_inventory_5 %></td>
+    </tr>
+  </table>
+
+  <div>
+    <p><strong>Wizard Injuries</strong></p>
+    <p><%= @participant.wizard_injuries %></p>
+  </div>
+
 <% if @participant.apprentice_name != "" %>
   <p>
-    And their apprentice:  <%= @participant.apprentice_name %>
+    <strong>And their apprentice: </strong> <%= @participant.apprentice_name %>
   </p>
+<table>
+  <tr>
+    <th>Move</th>
+    <th>Fight</th>
+    <th>Shoot</th>
+    <th>Armour</th>
+    <th>Will</th>
+    <th>Health</th>
+    <th>Inventory</th>
+  </tr>
+      <tr>
+      <td><%= @participant.apprentice_move %></td>
+      <td><%= @participant.apprentice_fight %></td>
+      <td><%= @participant.apprentice_shoot %></td>
+      <td><%= @participant.apprentice_armour %></td>
+      <td><%= @participant.apprentice_will %></td>
+      <td><%= @participant.apprentice_health %></td>
+      <td><%= @participant.apprentice_inventory_1 %> <%= @participant.apprentice_inventory_2 %>
+          <%= @participant.apprentice_inventory_3 %> <%= @participant.apprentice_inventory_4 %></td>
+    </tr>
+  </table>
+
+  <div>
+    <p><strong>Apprentice Injuries</strong></p>
+    <p><%= @participant.apprentice_injuries %></p>
+  </div>
+
 <% end %>
 <h2>Spells</h2>
 <% if @spells.any? %>
@@ -38,6 +92,21 @@
   </table>
 <% end %>
 <%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id) %>
+
+<h2> Item Stash  ----  Current Gold Cache: <%= @participant.gold_cache %></h2>
+<div><p><%= @participant.item_stash %></p></div>
+
+<h2>Base of Operations</h2>
+<% if @base != nil %>
+  <p><%= @base.location %></p>
+  <p><%= @base.effects %></p>
+  <%= link_to 'Change', edit_base_path(:id => @base.id) %> 
+  <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
+                                       data: { confirm: "You sure?" } %>
+<% else %>
+  <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-primary"%>
+<% end %>
+
 <h2>Soldiers</h2>
 <table>
   <tr>
@@ -51,6 +120,7 @@
     <th>Health</th>
     <th>Cost</th>
     <th>Notes</th>
+    <th>Item</th>
   </tr>
   <% if @participant.soldier_1_type != "" %>
    <% @s = Soldier.find_by_class_name(@participant.soldier_1_type) %>
@@ -65,6 +135,7 @@
     	<td><%= @s.health %></td>
     	<td><%= @s.cost %></td>
     	<td><%= @s.notes %></td>
+      <td><%= @participant.soldier_1_item %></td>
   	</tr>
   <% end %>
   <% if @participant.soldier_2_type != "" %>
@@ -80,6 +151,7 @@
       	<td><%= @s.health %></td>
       	<td><%= @s.cost %></td>
       	<td><%= @s.notes %></td>
+        <td><%= @participant.soldier_2_item %></td>
   	 </tr>
   	<% end %>
   	<% if @participant.soldier_3_type != "" %>
@@ -92,9 +164,10 @@
         	<td><%= @s.shoot %></td>
         	<td><%= @s.armour %></td>
         	<td><%= @s.will %></td>
-    	     <td><%= @s.health %></td>
-    	   <td><%= @s.cost %></td>
-    	   <td><%= @s.notes %></td>
+    	    <td><%= @s.health %></td>
+    	    <td><%= @s.cost %></td>
+    	    <td><%= @s.notes %></td>
+          <td><%= @participant.soldier_3_item %></td>
   		  </tr>
   	<% end %>
   	<% if @participant.soldier_4_type != "" %>
@@ -110,6 +183,7 @@
       	<td><%= @s.health %></td>
       	<td><%= @s.cost %></td>
       	<td><%= @s.notes %></td>
+        <td><%= @participant.soldier_4_item %></td>
   	 </tr>
   	<% end %>
   	<% if @participant.soldier_5_type != "" %>
@@ -125,6 +199,7 @@
     	<td><%= @s.health %></td>
     	<td><%= @s.cost %></td>
     	<td><%= @s.notes %></td>
+      <td><%= @participant.soldier_5_item %></td>
   	</tr>
   	<% end %>
   	<% if @participant.soldier_6_type != "" %>
@@ -140,6 +215,7 @@
     	<td><%= @s.health %></td>
     	<td><%= @s.cost %></td>
     	<td><%= @s.notes %></td>
+      <td><%= @participant.soldier_6_item %></td>
   	</tr>
   	<% end %>
   	<% if @participant.soldier_7_type != "" %>
@@ -155,6 +231,7 @@
     	<td><%= @s.health %></td>
     	<td><%= @s.cost %></td>
     	<td><%= @s.notes %></td>
+      <td><%= @participant.soldier_7_item %></td>
   	</tr>
   	<% end %>
   	<% if @participant.soldier_8_type != "" %>
@@ -170,38 +247,9 @@
     		<td><%= @s.health %></td>
     		<td><%= @s.cost %></td>
     		<td><%= @s.notes %></td>
+        <td><%= @participant.soldier_8_item %></td>
   		</tr>
   	<% end %>
-  	<% if @participant.soldier_9_type != "" %>
-  	  <% @s = Soldier.find_by_class_name(@participant.soldier_9_type) %>
-  	<tr>
-    	<td><%= @participant.soldier_9_name %></td>
-    	<td><%= @s.class_name %></td> 
-    	<td><%= @s.move %></td>
-    	<td><%= @s.fight %></td>
-    	<td><%= @s.shoot %></td>
-    	<td><%= @s.armour %></td>
-    	<td><%= @s.will %></td>
-    	<td><%= @s.health %></td>
-    	<td><%= @s.cost %></td>
-    	<td><%= @s.notes %></td>
-  	</tr>
-  	<% end %>
-  	<% if @participant.soldier_10_type != "" %>
-  	  <% @s = Soldier.find_by_class_name(@participant.soldier_10_type) %>
-  		<tr>
-    		<td><%= @participant.soldier_10_name %></td>
-    		<td><%= @s.class_name %></td> 
-    		<td><%= @s.move %></td>
-    		<td><%= @s.fight %></td>
-    		<td><%= @s.shoot %></td>
-    		<td><%= @s.armour %></td>
-    		<td><%= @s.will %></td>
-    		<td><%= @s.health %></td>
-    		<td><%= @s.cost %></td>
-    		<td><%= @s.notes %></td>
-  		</tr>
-  <% end %>
 </table>
 
 <% if @participant.user_id == current_user.id %>

@@ -1,5 +1,9 @@
 class FrostGraveParticipant < ActiveRecord::Base
   belongs_to :campaign
-  validates :campaign_id, presence: true
   has_many :spells, dependent: :destroy
+  has_one :base_of_operations, dependent: :destroy
+
+  validates :campaign_id, presence: true
+  validates :starting_cache, numericality: { greater_than: 0, :message => " is empty, Warband costs more than 500GC"}
+
 end

@@ -12,6 +12,11 @@
   <p> Your warband will appear on the campaign detail screen (click the campaign name)</p>
   <p> Click the warband's name to view it in detail, where you will be able to/can edit/delete/update progress on this campaign</p>
 
+  <h2> Updating your warband </h2>
+  <p>Currently you have a lot of freedom in what you update, it's up to you to update the running totals of gold earned and gold spent, adding items and soldiers as you go. It's also up to you to keep track of your spells and your choices when levelling up, though the display will calculate your curernt wizard level based on XP earned and current gold cache based on total earned - total spent. </p>
+  <p>It's also up to you to calculate stats and split stats based on weapon effects, for instance, having a 2H weapon will not add +2 to your FIGHT on the display, and don't try to enter split stats for wizards as it will probably break the apprentice stats.</p>
+  <p>Note that this also applies to injuries, there is a field for you to record injuries for your wizard and apprentice but you will need to keep track of their effects.</p>
+
   <h2> What do do when you inevitably find a bug</h2>
   <p> Check the TODO list first, because if it's on there it's more of an improvement than a bug. Should your search prove fruitless...</p>
   <p> Tell me on whatsapp or facebook. I'll add another contact method here when we expand our beta testing</p>
@@ -19,18 +24,30 @@
 
   <h2>TODO List in order of importance</h2>
   <ul>
+    <li>Closed campaign entry, either through creator - set password or user invite.</li>
   	<li> Warband stuff: <ul>
-      <li> Add items in stash </li>
-      <li> gold, xp totals </li>
-      <li> Validate COST on creation </li>
+      <li> If you add a soldier to an existing warband, you have to make sure you add it's cost to the spent total </li>
+      <li> Injuries and items applying their effects on the warband screen. </li>
+      <li> Base upgrades.</li>
+      <li> Add summoned creatures to the seeded soldier options</li>
+      <li> There are a metric tonne of validations to add. Go ahead and enter a giant string for campaign name or something. Actually don't.</li>
+      <li>+++ At this point, we can go into a beta test +++</li>
+      <li> Improve the spell creation, drop downs for ranges etc. </li>
+      <li> Currently you hire pregenerated soldiers and select from bases etc, would do the same for items and have a 'purchase' button which would add it to your items if you have gold in the cache, same for injuries to apply them directly to the characters etc.</li>
+      <li>Would also like to have a system where you equip characters/soldiers with items from the item stash rather than manually doing all the record keeping.</li>
+      <li> Warband size of 11 if the Inn is established (I had 10 warband members, deleted all the extra code when i realised the max is 8 base. FML.). Brewery discount.....</li>
     </ul></li>
-    <li>You can currenty edit warbands but must re-enter soldiers correctly. Improve this. Idea to do more 'controlled' form of update along with a detailed update. So you can do a detailed update to correct creation mistakes, or a 'game night' update where you only update [gold earned] [xp earned] [level up options] [items buy/sell/equip/stash] [death/injury] </li>
-  	<li>Warband detail view visuals, Soldiers done.</li>
+    <li>Idea to do more 'controlled' form of update along with a detailed update. So you can do a detailed update to correct creation mistakes, or a 'game night' update where you only update [gold earned] [xp earned] [level up options] [items buy/sell/equip/stash] [death/injury] this might require a fairly large rework, maybe not. </li>
+  	<li>Warband detail view visuals</li>
   	<li>Campaign detail view visuals and better edit/create.</li>
-  	<li>Closed campaign entry and validate user for edit/delete warband/campaign (ie you have to be the creator of it to edit it). This is sort of in progress and the reason that deleting the warband errors.</li>
-  	<li>+++ At this point, we can go into a beta test +++</li>
   	<li>Confirm Osprey won't sue me for this</li>
+    <li> Bestiary and scenarios? </li>
   	<li>Optimise responsive/mobile, ideally the site would be really smooth and user friendly on mobile for game night updates</li>
   	<li>Make it look less bad/proper design etc.</li>
   </ul>
+
+  <h2>Known bugs/issues</h2>
+    <ul>
+      <li> Validate COST of warband prior to creation works but if you fail to create things will get weird, might have to return to campaign page and refresh.</li>
+    </ul>
 </div>

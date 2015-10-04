@@ -1,0 +1,28 @@
+<%= form_for(@base) do |f| %>
+  <% if @base.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@base.errors.count, "error") %> prohibited this base from being saved:</h2>
+
+      <ul>
+      <% @base.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.label :location %>
+<%= collection_select :base_of_operations, :location, @locations, :name, :name, {selected: 1} %>
+
+<%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
+
+<div class="actions">
+  <%= f.submit "Establish Base", class: "btn btn-primary" %>
+</div>
+
+<% @locations.each do |l| %>
+  <p><%= l.name %> :</p>
+  <p><%= l.effects %></p>
+<% end %>
+
+<% end %>

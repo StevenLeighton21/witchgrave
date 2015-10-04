@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003154818) do
+ActiveRecord::Schema.define(version: 20151004113919) do
+
+  create_table "base_of_operations", force: :cascade do |t|
+    t.integer  "frost_grave_participant_id"
+    t.string   "location"
+    t.text     "effects"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "base_of_operations", ["created_at"], name: "index_base_of_operations_on_created_at"
+  add_index "base_of_operations", ["frost_grave_participant_id"], name: "index_base_of_operations_on_frost_grave_participant_id"
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
@@ -33,8 +44,8 @@ ActiveRecord::Schema.define(version: 20151003154818) do
     t.string   "wizard_weapon"
     t.string   "apprentice_name"
     t.string   "apprentice_weapon"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "campaign_id"
     t.string   "soldier_1_name"
     t.string   "soldier_1_type"
@@ -67,12 +78,51 @@ ActiveRecord::Schema.define(version: 20151003154818) do
     t.string   "soldier_10_type"
     t.string   "soldier_10_item"
     t.string   "wizard_discipline"
+    t.string   "gold_cache"
+    t.string   "wizard_xp"
+    t.string   "item_stash"
+    t.string   "wizard_inventory_1"
+    t.string   "wizard_inventory_2"
+    t.string   "wizard_inventory_3"
+    t.string   "wizard_inventory_4"
+    t.string   "wizard_inventory_5"
+    t.string   "apprentice_inventory_1"
+    t.string   "apprentice_inventory_2"
+    t.string   "apprentice_inventory_3"
+    t.string   "apprentice_inventory_4"
+    t.integer  "wizard_move"
+    t.string   "wizard_fight"
+    t.string   "wizard_shoot"
+    t.integer  "wizard_armour"
+    t.string   "wizard_will"
+    t.integer  "wizard_health"
+    t.text     "wizard_notes"
+    t.integer  "wizard_level"
+    t.integer  "apprentice_move"
+    t.string   "apprentice_fight"
+    t.string   "apprentice_shoot"
+    t.integer  "apprentice_armour"
+    t.string   "apprentice_will"
+    t.integer  "apprentice_health"
+    t.text     "apprentice_notes"
+    t.integer  "gold_earned"
+    t.integer  "gold_spent"
+    t.text     "wizard_injuries"
+    t.text     "apprentice_injuries"
+    t.integer  "starting_cache"
   end
 
   add_index "frost_grave_participants", ["campaign_id", "created_at"], name: "index_frost_grave_participants_on_campaign_id_and_created_at"
   add_index "frost_grave_participants", ["campaigns_id"], name: "index_frost_grave_participants_on_campaigns_id"
   add_index "frost_grave_participants", ["user_id", "campaigns_id"], name: "index_frost_grave_participants_on_user_id_and_campaigns_id"
   add_index "frost_grave_participants", ["user_id"], name: "index_frost_grave_participants_on_user_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "effects"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "soldiers", force: :cascade do |t|
     t.integer  "move"

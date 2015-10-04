@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :frost_grave_participants
   resources :spells
+  resources :base_of_operations
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -17,7 +18,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'static_pages#home'
-
+  get    'create_base'  => 'base_of_operations#new'
+  get    'base_of_operations_index'  => 'base_of_operations#index'
+  post   'base_of_operations_index' => 'base_of_operations#create'
+  get    'edit_base'    => 'base_of_operations#edit'
+  delete 'delete_base'  => 'base_of_operations#destroy'
   get    'create_spell' => 'spells#new'
   get    'edit_spell'   => 'spells#edit'
   delete 'delete_spell' => 'spells#destroy'
