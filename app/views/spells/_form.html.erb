@@ -12,34 +12,25 @@
   <% end %>
 
 <div class="textarea">
-  <%= f.label :discipline %>
-  <%= select :spell, :discipline, SpellsController::DISCIPLINES, {selected: 1} %>
+  <%= f.label :discipline, 'Select Spell Discipline' %>
+  <%= select :spell, :discipline, SpellsController::DISCIPLINES %>
 </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-<div class="field">
-  <%= f.label :casting_value %>
-  <%= f.text_field :casting_value %>
+<div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Chronomancer">
+  <% @chrono = @default_spells.where(:discipline => "Chronomancer") %>
+  <% @chrono.each do |spell| %>
+    <div class="selectable_spell">
+    <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
+    <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
 
-<div class="field">
-  <%= f.label :range %>
-  <%= f.text_field :range %>
-</div>
-<div class="field">
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+<div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Elementalist">
+<p> elementalist selected! </p>
 </div>
 
 <%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
-
-<div class="actions">
-  <%= f.submit "Learn Spell", class: "btn btn-primary" %>
-</div>
 
 
 <% end %>

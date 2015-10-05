@@ -1,0 +1,45 @@
+<%= form_for(@spell) do |f| %>
+  <% if @spell.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spell.errors.count, "error") %> prohibited this warband from being saved:</h2>
+
+      <ul>
+      <% @spell.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="textarea">
+  <%= f.label :discipline %>
+  <%= select :spell, :discipline, SpellsController::DISCIPLINES, {selected: 1} %>
+</div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+<div class="field">
+  <%= f.label :casting_value %>
+  <%= f.text_field :casting_value %>
+</div>
+
+<div class="field">
+  <%= f.label :range %>
+  <%= f.text_field :range %>
+</div>
+<div class="field">
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+
+<%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
+
+<div class="actions">
+  <%= f.submit "Learn Spell", class: "btn btn-primary" %>
+</div>
+
+
+<% end %>

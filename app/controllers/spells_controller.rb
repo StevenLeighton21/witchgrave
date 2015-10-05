@@ -9,11 +9,14 @@ DISCIPLINES = [
   ["Sigilist"],
   ["Soothsayer"],
   ["Summoner"],
-  ["Thaumaturge"]
+  ["Thaumaturge"],
+  ["Witch"]
 ] 
 
   def new
     @spell = Spell.new
+    @default_spells = DefaultSpell.all
+
   end
 
   def edit
@@ -38,8 +41,9 @@ DISCIPLINES = [
   end
 
   def create
-    @participant = FrostGraveParticipant.find(params[:spell][:frost_grave_participant_id])
-    @spell = @participant.spells.build(spell_params)
+    @participant = FrostGraveParticipant.find(params[:frost_grave_participant_id])
+    @default_spells = DefaultSpell.all
+    @spell = @participant.spells.build(@default_spells.find_by_name(params[:spell_name]).clone.attributes)
     if @participant.save
       flash[:success] = "Spell successfully learned"
       redirect_to frost_grave_participant_path(@participant.id)

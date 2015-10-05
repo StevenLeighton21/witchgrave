@@ -202,7 +202,18 @@ Location.create!(name: "Library",
 Location.create!(name: "Laboratory",
                  effects: "After each game the Wizard gains 20 XP")
 
+DefaultSpell.create!(discipline:    "Chronomancer",
+                     name:          "Crumble",
+                     casting_value: 10,
+                     range:         "Line of Sight",
+                     description:   "This spell only works against man made structures such as buildings or walls. The spellcaster accellerates the passage of time in a small area of the structure, causing it to crumble.
+                     This can effectively create a doorway sized hole in the structure. This spell can also be used to collapse a section of floor beneath a figure standing above ground level. The affected model must pass a Will roll
+                     against the casting roll or fall down to the next level down, suffering fall damage as appropriate.")
 
-
-
+DefaultSpell.create!(discipline:    "Chronomancer",
+                     name:          "Call Storm",
+                     casting_value: 12,
+                     range:         "Area of Effect",
+                     description:   "If this spell is successfully cast, all bow and crossbow attacks are at -1 for the rest of the game. This spell may be cast multiple times (and by multiple spellcasters) with each additional casting increasing the penalty by -1,
+                     to a maximum of -10.")
 
