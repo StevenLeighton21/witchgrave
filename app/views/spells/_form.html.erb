@@ -13,7 +13,7 @@
 
 <div class="textarea">
   <%= f.label :discipline, 'Select Spell Discipline' %>
-  <%= select :spell, :discipline, SpellsController::DISCIPLINES %>
+  <%= select :spell, :discipline, SpellsController::DISCIPLINES, {prompt: true}%>
 </div>
 
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Chronomancer">
