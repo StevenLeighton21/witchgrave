@@ -36,78 +36,28 @@
   <%= select :frost_grave_participant, :wizard_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
 </div>
 
-
-
-<div class="field">
-  <%= f.label :apprentice_name %>
-  <%= f.text_field :apprentice_name %>
-</div>
-<div class="field">
-  <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
-  <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: 1} %>
+<div class="apprentice_checkbox">
+  <%= f.label :apprentice_hired, 'Hire Apprentice? (200GC)' %>
+  <%= f.check_box :apprentice_hired %>
 </div>
 
-<div class="field">
-  <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
-  <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
+<div class="js-dependent-fields" data-checkbox-id="frost_grave_participant_apprentice_hired" data-checkbox-value="true">
+
+  <div class="field">
+    <%= f.label :apprentice_name %>
+    <%= f.text_field :apprentice_name %>
+  </div>
+  <div class="field">
+    <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
+    <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: 1} %>
+  </div>
+
+  <div class="field">
+   <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
+   <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
+  </div>
+
 </div>
-
-<div class="field">
-  <%= f.label :soldier_1_name %>
-  <%= f.text_field :soldier_1_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_1_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_2_name %>
-  <%= f.text_field :soldier_2_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_2_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_3_name %>
-  <%= f.text_field :soldier_3_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_3_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_4_name %>
-  <%= f.text_field :soldier_4_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_4_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_5_name %>
-  <%= f.text_field :soldier_5_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_5_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_6_name %>
-  <%= f.text_field :soldier_6_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_6_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_7_name %>
-  <%= f.text_field :soldier_7_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_7_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
-<div class="field">
-  <%= f.label :soldier_8_name %>
-  <%= f.text_field :soldier_8_name %>
-</div>
-
-<%= collection_select :frost_grave_participant, :soldier_8_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
-
 
 <%= f.hidden_field :campaign_id, :value => params[:c_id] %>
 

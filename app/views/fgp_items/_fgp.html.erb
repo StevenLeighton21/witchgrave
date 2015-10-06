@@ -1,0 +1,38 @@
+<%= form_for(@fgp_item) do |f| %>
+  <% if @fgp_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fgp_item.errors.count, "error") %> prohibited this warband from being saved:</h2>
+
+      <ul>
+      <% @fgp_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="field">
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+
+<div class="field">
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+</div>
+
+<%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
+<%= f.hidden_field :looted, :value => params[:looted] %>
+
+ <div class="actions">
+      <%= f.submit "Update Item", class: "btn btn-primary" %>
+  </div>
+
+
+
+<% end %>

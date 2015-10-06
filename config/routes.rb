@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :frost_grave_participants
   resources :spells
+  resources :fgp_items
   resources :base_of_operations
 
   # The priority is based upon order of creation: first created -> highest priority.
