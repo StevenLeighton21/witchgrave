@@ -64,6 +64,10 @@
   <%= f.text_field :wizard_inventory_5 %>
 </div>
 
+<div class="field">
+  <%= f.label :wizard_injuries, 'Wizard Injuries'%>
+  <%= f.text_area :wizard_injuries %>
+</div>
 
 <div class="field">
   <%= f.label :apprentice_name %>
@@ -107,6 +111,109 @@
   <%= f.text_field :apprentice_inventory_4 %>
 </div>
 
+<div class="field">
+  <%= f.label :soldier_1_name %>
+  <%= f.text_field :soldier_1_name %>
+</div>
+
+<% selection = @participant.soldier_1_type == "" ? "" : @participant.soldier_1_type %>
+<%= collection_select :frost_grave_participant, :soldier_1_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_1_item, "Equip #{@participant.soldier_1_name} with" %>
+  <%= f.text_field :soldier_1_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_2_name %>
+  <%= f.text_field :soldier_2_name %>
+</div>
+
+<% selection = @participant.soldier_2_type == "" ? "" : @participant.soldier_2_type %>
+<%= collection_select :frost_grave_participant, :soldier_2_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_2_item, "Equip #{@participant.soldier_2_name} with" %>
+  <%= f.text_field :soldier_2_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_3_name %>
+  <%= f.text_field :soldier_3_name %>
+</div>
+
+<% selection = @participant.soldier_3_type == "" ? "" : @participant.soldier_3_type %>
+<%= collection_select :frost_grave_participant, :soldier_3_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_3_item, "Equip #{@participant.soldier_3_name} with" %>
+  <%= f.text_field :soldier_3_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_4_name %>
+  <%= f.text_field :soldier_4_name %>
+</div>
+
+<% selection = @participant.soldier_4_type == "" ? "" : @participant.soldier_4_type %>
+<%= collection_select :frost_grave_participant, :soldier_4_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_4_item, "Equip #{@participant.soldier_4_name} with" %>
+  <%= f.text_field :soldier_4_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_5_name %>
+  <%= f.text_field :soldier_5_name %>
+</div>
+
+<% selection = @participant.soldier_5_type == "" ? "" : @participant.soldier_5_type %>
+<%= collection_select :frost_grave_participant, :soldier_5_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_5_item, "Equip #{@participant.soldier_5_name} with" %>
+  <%= f.text_field :soldier_5_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_6_name %>
+  <%= f.text_field :soldier_6_name %>
+</div>
+
+<% selection = @participant.soldier_6_type == "" ? "" : @participant.soldier_6_type %>
+<%= collection_select :frost_grave_participant, :soldier_6_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_6_item, "Equip #{@participant.soldier_6_name} with" %>
+  <%= f.text_field :soldier_6_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_7_name %>
+  <%= f.text_field :soldier_7_name %>
+</div>
+
+<% selection = @participant.soldier_7_type == "" ? "" : @participant.soldier_7_type %>
+<%= collection_select :frost_grave_participant, :soldier_7_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_7_item, "Equip #{@participant.soldier_7_name} with" %>
+  <%= f.text_field :soldier_7_item %>
+</div>
+
+<div class="field">
+  <%= f.label :soldier_8_name %>
+  <%= f.text_field :soldier_8_name %>
+</div>
+
+<% selection = @participant.soldier_8_type == "" ? "" : @participant.soldier_8_type %>
+<%= collection_select :frost_grave_participant, :soldier_8_type, Soldier.all, :class_name, :class_name, {selected: selection, include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_8_item, "Equip #{@participant.soldier_8_name} with" %>
+  <%= f.text_field :soldier_8_item %>
+</div>
 
  <div class="actions">
       <%= f.submit "Update Warband", class: "btn btn-primary" %>

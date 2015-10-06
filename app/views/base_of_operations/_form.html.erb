@@ -14,15 +14,15 @@
 <%= f.label :location %>
 <%= collection_select :base_of_operations, :location, @locations, :name, :name, {selected: 1} %>
 
+<div class="field">
+  <%= f.label :effects, 'The Base Provides: '%>
+  <%= f.text_area :effects %>
+</div>
+
 <%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
 
 <div class="actions">
   <%= f.submit "Establish Base", class: "btn btn-primary" %>
 </div>
-
-<% @locations.each do |l| %>
-  <p><%= l.name %> :</p>
-  <p><%= l.effects %></p>
-<% end %>
 
 <% end %>

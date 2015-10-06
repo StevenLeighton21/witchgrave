@@ -16,10 +16,10 @@ class BaseOfOperationsController < ApplicationController
   def create
     #TODO: much suck
     @participant = FrostGraveParticipant.find(params[:base_of_operations][:frost_grave_participant_id])
-    @locations = Location.all
-    name_of_loc = params[:base_of_operations][:location]
-    selected_loc = @locations.find_by_name(name_of_loc)
-    params[:base_of_operations][:effects] = selected_loc.effects
+    # @locations = Location.all
+    # name_of_loc = params[:base_of_operations][:location]
+    # selected_loc = @locations.find_by_name(name_of_loc)
+    # params[:base_of_operations][:effects] = selected_loc.effects
     @base = @participant.build_base_of_operations(base_params)
     if @participant.save
       flash[:success] = "Base successfully established"
@@ -31,10 +31,10 @@ class BaseOfOperationsController < ApplicationController
 
   def update
     @base = BaseOfOperations.find(params[:id])
-    @locations = Location.all
-    name_of_loc = params[:base_of_operations][:location]
-    selected_loc = @locations.find_by_name(name_of_loc)
-    params[:base_of_operations][:effects] = selected_loc.effects
+    # @locations = Location.all
+    # name_of_loc = params[:base_of_operations][:location]
+    # selected_loc = @locations.find_by_name(name_of_loc)
+    # params[:base_of_operations][:effects] = selected_loc.effects
     if @base.update_attributes(base_params)
       flash[:success] = "Base updated"
       redirect_to frost_grave_participant_path(@base.frost_grave_participant_id)

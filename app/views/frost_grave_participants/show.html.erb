@@ -111,8 +111,8 @@
 
 <h2>Base of Operations</h2>
 <% if @base != nil %>
-  <p><%= @base.location %></p>
-  <p><%= @base.effects %></p>
+  <p><strong>Location : </strong><%= @base.location %></p>
+  <p><strong>Benefits : </strong><%= @base.effects %></p>
   <% if @participant.user_id == current_user.id %>
    <%= link_to 'Change', edit_base_path(:id => @base.id) %> 
    <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
@@ -139,8 +139,134 @@
     <th>Notes</th>
     <th>Item</th>
   </tr>
- 
-
+  <% if @participant.soldier_1_type != "" %>
+   <% @s = Soldier.find_by_class_name(@participant.soldier_1_type) %>
+    <tr>
+      <td><%= @participant.soldier_1_name %></td>
+      <td><%= @s.class_name %></td> 
+      <td><%= @s.move %></td>
+      <td><%= @s.fight %></td>
+      <td><%= @s.shoot %></td>
+      <td><%= @s.armour %></td>
+      <td><%= @s.will %></td>
+      <td><%= @s.health %></td>
+      <td><%= @s.cost %></td>
+      <td><%= @s.notes %></td>
+      <td><%= @participant.soldier_1_item %></td>
+    </tr>
+  <% end %>
+  <% if @participant.soldier_2_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_2_type) %>
+        <tr>
+        <td><%= @participant.soldier_2_name %></td>
+        <td><%= @s.class_name %></td> 
+        <td><%= @s.move %></td>
+        <td><%= @s.fight %></td>
+        <td><%= @s.shoot %></td>
+        <td><%= @s.armour %></td>
+        <td><%= @s.will %></td>
+        <td><%= @s.health %></td>
+        <td><%= @s.cost %></td>
+        <td><%= @s.notes %></td>
+        <td><%= @participant.soldier_2_item %></td>
+     </tr>
+    <% end %>
+    <% if @participant.soldier_3_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_3_type) %>
+        <tr>
+          <td><%= @participant.soldier_3_name %></td>
+          <td><%= @s.class_name %></td> 
+          <td><%= @s.move %></td>
+          <td><%= @s.fight %></td>
+          <td><%= @s.shoot %></td>
+          <td><%= @s.armour %></td>
+          <td><%= @s.will %></td>
+          <td><%= @s.health %></td>
+          <td><%= @s.cost %></td>
+          <td><%= @s.notes %></td>
+          <td><%= @participant.soldier_3_item %></td>
+        </tr>
+    <% end %>
+    <% if @participant.soldier_4_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_4_type) %>
+        <tr>
+        <td><%= @participant.soldier_4_name %></td>
+        <td><%= @s.class_name %></td> 
+        <td><%= @s.move %></td>
+        <td><%= @s.fight %></td>
+        <td><%= @s.shoot %></td>
+        <td><%= @s.armour %></td>
+        <td><%= @s.will %></td>
+        <td><%= @s.health %></td>
+        <td><%= @s.cost %></td>
+        <td><%= @s.notes %></td>
+        <td><%= @participant.soldier_4_item %></td>
+     </tr>
+    <% end %>
+    <% if @participant.soldier_5_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_5_type) %>
+    <tr>
+      <td><%= @participant.soldier_5_name %></td>
+      <td><%= @s.class_name %></td> 
+      <td><%= @s.move %></td>
+      <td><%= @s.fight %></td>
+      <td><%= @s.shoot %></td>
+      <td><%= @s.armour %></td>
+      <td><%= @s.will %></td>
+      <td><%= @s.health %></td>
+      <td><%= @s.cost %></td>
+      <td><%= @s.notes %></td>
+      <td><%= @participant.soldier_5_item %></td>
+    </tr>
+    <% end %>
+    <% if @participant.soldier_6_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_6_type) %>
+    <tr>
+      <td><%= @participant.soldier_6_name %></td>
+      <td><%= @s.class_name %></td> 
+      <td><%= @s.move %></td>
+      <td><%= @s.fight %></td>
+      <td><%= @s.shoot %></td>
+      <td><%= @s.armour %></td>
+      <td><%= @s.will %></td>
+      <td><%= @s.health %></td>
+      <td><%= @s.cost %></td>
+      <td><%= @s.notes %></td>
+      <td><%= @participant.soldier_6_item %></td>
+    </tr>
+    <% end %>
+    <% if @participant.soldier_7_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_7_type) %>
+    <tr>
+      <td><%= @participant.soldier_7_name %></td>
+      <td><%= @s.class_name %></td> 
+      <td><%= @s.move %></td>
+      <td><%= @s.fight %></td>
+      <td><%= @s.shoot %></td>
+      <td><%= @s.armour %></td>
+      <td><%= @s.will %></td>
+      <td><%= @s.health %></td>
+      <td><%= @s.cost %></td>
+      <td><%= @s.notes %></td>
+      <td><%= @participant.soldier_7_item %></td>
+    </tr>
+    <% end %>
+    <% if @participant.soldier_8_type != "" %>
+      <% @s = Soldier.find_by_class_name(@participant.soldier_8_type) %>
+      <tr>
+        <td><%= @participant.soldier_8_name %></td>
+        <td><%= @s.class_name %></td> 
+        <td><%= @s.move %></td>
+        <td><%= @s.fight %></td>
+        <td><%= @s.shoot %></td>
+        <td><%= @s.armour %></td>
+        <td><%= @s.will %></td>
+        <td><%= @s.health %></td>
+        <td><%= @s.cost %></td>
+        <td><%= @s.notes %></td>
+        <td><%= @participant.soldier_8_item %></td>
+      </tr>
+    <% end %>
 </table>
 
 <% if @participant.user_id == current_user.id %>

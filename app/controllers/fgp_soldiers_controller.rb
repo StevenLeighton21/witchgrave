@@ -1,0 +1,2 @@
+class FgpSoldiersController < ApplicationController
+end

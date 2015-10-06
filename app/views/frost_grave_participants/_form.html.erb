@@ -59,6 +59,61 @@
 
 </div>
 
+<div class="field">
+  <%= f.label :soldier_1_name %>
+  <%= f.text_field :soldier_1_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_1_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_2_name %>
+  <%= f.text_field :soldier_2_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_2_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_3_name %>
+  <%= f.text_field :soldier_3_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_3_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_4_name %>
+  <%= f.text_field :soldier_4_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_4_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_5_name %>
+  <%= f.text_field :soldier_5_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_5_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_6_name %>
+  <%= f.text_field :soldier_6_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_6_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_7_name %>
+  <%= f.text_field :soldier_7_name %>
+</div>
+
+<%= collection_select :frost_grave_participant, :soldier_7_type, Soldier.all, :class_name, :class_name_with_cost, {include_blank: ""} %>
+
+<div class="field">
+  <%= f.label :soldier_8_name %>
+  <%= f.text_field :soldier_8_name %>
+</div>
+
+
 <%= f.hidden_field :campaign_id, :value => params[:c_id] %>
 
 

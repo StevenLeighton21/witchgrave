@@ -1,0 +1,2 @@
+module FgpSoldiersHelper
+end
