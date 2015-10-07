@@ -11,6 +11,24 @@ User.create!(name:  "Steven",
              password_confirmation: "frostgr@ve",
              admin: true)
 
+User.create!(name:  "Stevie",
+             email: "stevie.boxall@gmail.com",
+             password:              "frostgrave",
+             password_confirmation: "frostgrave",
+             admin: true)
+
+User.create!(name:  "Rob",
+             email: "rgboyce@gmail.com",
+             password:              "frostgrave",
+             password_confirmation: "frostgrave",
+             admin: true)
+
+User.create!(name:  "Kieron",
+             email: "kieronallender@gmail.com",
+             password:              "frostgrave",
+             password_confirmation: "frostgrave",
+             admin: true)
+
 Soldier.create!(class_name: "War Hound",
                 move:       8,
                 fight:      "+1",
