@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006180414) do
+ActiveRecord::Schema.define(version: 20151007183345) do
 
   create_table "base_of_operations", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
@@ -64,10 +64,19 @@ ActiveRecord::Schema.define(version: 20151006180414) do
   create_table "fgp_soldiers", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
     t.string   "name"
-    t.string   "class"
     t.string   "item"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "move"
+    t.string   "fight"
+    t.string   "shoot"
+    t.integer  "armour"
+    t.string   "will"
+    t.integer  "health"
+    t.integer  "cost"
+    t.text     "notes"
+    t.string   "class_name"
+    t.integer  "sale_price"
   end
 
   add_index "fgp_soldiers", ["frost_grave_participant_id"], name: "index_fgp_soldiers_on_frost_grave_participant_id"

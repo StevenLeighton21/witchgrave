@@ -28,7 +28,7 @@ class FrostGraveParticipantsController < ApplicationController
 
   def show
     @participant = FrostGraveParticipant.find(params[:id])
-    @soldiers    = Soldier.all
+    @soldiers    = @participant.fgp_soldiers.all
     @spells      = @participant.spells.all
     @base        = @participant.base_of_operations
     @items       = @participant.fgp_items.all
@@ -118,22 +118,6 @@ class FrostGraveParticipantsController < ApplicationController
         :apprentice_inventory_2,
         :apprentice_inventory_3,
         :apprentice_inventory_4,
-        :soldier_1_name,
-        :soldier_1_type,
-        :soldier_2_name,
-        :soldier_2_type,
-        :soldier_3_name,
-        :soldier_3_type,
-        :soldier_4_name,
-        :soldier_4_type,
-        :soldier_5_name,
-        :soldier_5_type,
-        :soldier_6_name,
-        :soldier_6_type,
-        :soldier_7_name,
-        :soldier_7_type,
-        :soldier_8_name,
-        :soldier_8_type,
         :item_stash,
         :gold_cache,
         :gold_earned,
@@ -190,30 +174,6 @@ class FrostGraveParticipantsController < ApplicationController
         :apprentice_will,
         :apprentice_health,
         :apprentice_injuries,
-        :soldier_1_name,
-        :soldier_1_type,
-        :soldier_1_item,
-        :soldier_2_name,
-        :soldier_2_type,
-        :soldier_2_item,
-        :soldier_3_name,
-        :soldier_3_type,
-        :soldier_3_item,
-        :soldier_4_name,
-        :soldier_4_type,
-        :soldier_4_item,
-        :soldier_5_name,
-        :soldier_5_type,
-        :soldier_5_item,
-        :soldier_6_name,
-        :soldier_6_type,
-        :soldier_6_item,
-        :soldier_7_name,
-        :soldier_7_type,
-        :soldier_7_item,
-        :soldier_8_name,
-        :soldier_8_type,
-        :soldier_8_item,
         :apprentice_hired
         ).merge(user_id: current_user.id)
     end
@@ -234,30 +194,6 @@ class FrostGraveParticipantsController < ApplicationController
       end
       if params[:apprentice_inventory_2] != ""
         cost += 5
-      end
-      if params.has_key?(:soldier_1_type) && params[:soldier_1_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_1_type]).cost
-      end
-      if params.has_key?(:soldier_2_type) && params[:soldier_2_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_2_type]).cost
-      end
-      if params.has_key?(:soldier_3_type) && params[:soldier_3_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_3_type]).cost
-      end
-      if params.has_key?(:soldier_4_type) && params[:soldier_4_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_4_type]).cost
-      end
-      if params.has_key?(:soldier_5_type) && params[:soldier_5_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_5_type]).cost
-      end
-      if params.has_key?(:soldier_6_type) && params[:soldier_6_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_6_type]).cost
-      end
-      if params.has_key?(:soldier_7_type) && params[:soldier_7_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_7_type]).cost
-      end
-      if params.has_key?(:soldier_8_type) && params[:soldier_8_type] != ""
-        cost += @soldiers.find_by_class_name(params[:soldier_8_type]).cost
       end
       return cost
     end

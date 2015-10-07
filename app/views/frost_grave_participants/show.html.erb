@@ -81,7 +81,7 @@
       <tr> 
         <td><%= spell.discipline %></td> 
         <td><%= spell.name %></td> 
-        <td><%= spell.casting_value %></td> 
+        <td><%= spell.string_for_casting_value %></td> 
         <td><%= spell.range %></td> 
         <td><%= spell.description %></td> 
         <% if @participant.user_id == current_user.id %>
@@ -120,47 +120,61 @@
   <% end %>
 <% else %>
   <% if @participant.user_id == current_user.id %>
-    <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-primary"%>
+    <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
   <% end %>
-<% end %>
+<% end %> 
 
 <h2>Soldiers</h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Class</th> 
-    <th>Move</th>
-    <th>Fight</th>
-    <th>Shoot</th>
-    <th>Armour</th>
-    <th>Will</th>
-    <th>Health</th>
-    <th>Cost</th>
-    <th>Notes</th>
-    <th>Item</th>
-  </tr>
-  <% if @participant.soldier_1_type != "" %>
-   <% @s = Soldier.find_by_class_name(@participant.soldier_1_type) %>
-    <tr>
-      <td><%= @participant.soldier_1_name %></td>
-      <td><%= @s.class_name %></td> 
-      <td><%= @s.move %></td>
-      <td><%= @s.fight %></td>
-      <td><%= @s.shoot %></td>
-      <td><%= @s.armour %></td>
-      <td><%= @s.will %></td>
-      <td><%= @s.health %></td>
-      <td><%= @s.cost %></td>
-      <td><%= @s.notes %></td>
-      <td><%= @participant.soldier_1_item %></td>
-    </tr>
+<div>
+  <table>
+
+    <% if @soldiers.any? %>
+      <tr>
+        <th>Name</th>
+        <th>Class</th> 
+        <th>Move</th>
+        <th>Fight</th>
+        <th>Shoot</th>
+        <th>Armour</th>
+        <th>Will</th>
+        <th>Health</th>
+        <th>Cost</th>
+        <th>Notes</th>
+        <th>Item</th>
+      </tr>
+      <% @soldiers.each do |soldier| %>
+        <tr>
+          <td><%= soldier.name %></td>
+          <td><%= soldier.class_name %></td>
+          <td><%= soldier.move %></td>
+          <td><%= soldier.fight %></td>
+          <td><%= soldier.shoot %></td>
+          <td><%= soldier.armour %></td>
+          <td><%= soldier.will %></td>
+          <td><%= soldier.health %></td>
+          <td><%= soldier.cost %></td>
+          <td><%= soldier.notes %></td>
+          <td><%= soldier.item %></td>
+          <td>  <%= link_to 'Change', '#' %> </td>
+          <td>  <%= link_to 'Died!', fgp_soldier_path(:id => soldier.id, :sell => "false"), method: :delete,
+                                       data: { confirm: "You sure? You will not get any GC and this cannot be undone!" } %></td>
+          <td>  <%= link_to 'Release!', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
+                                       data: { confirm: "You sure? This cannot be undone!" } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </table>
+  <div>
+    <%= link_to 'Hire a Soldier', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
+  </div>
+</div>
+
+<div style="margin-top:20px">
+  <% if @participant.user_id == current_user.id %>
+   <%= link_to "Update this Warband", edit_frost_grave_participant_path(@participant.id), class: "btn btn-lg btn-primary" %>
+   <%= link_to "Delete this Warband", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
+                                         data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
   <% end %>
-
-</table>
-
-<% if @participant.user_id == current_user.id %>
-  <%= link_to "Update this Warband", edit_frost_grave_participant_path(@participant.id), class: "btn btn-lg btn-primary" %>
-  <%= link_to "Delete this Warband", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
-                                       data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
-<% end %>
+</div>
 </div>

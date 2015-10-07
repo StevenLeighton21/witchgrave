@@ -43,6 +43,7 @@ DISCIPLINES = [
   def create
     @participant = FrostGraveParticipant.find(params[:frost_grave_participant_id])
     @default_spells = DefaultSpell.all
+    #todo fix dupe id bug 
     @spell = @participant.spells.build(@default_spells.find_by_name(params[:spell_name]).clone.attributes)
     if @participant.save
       flash[:success] = "Spell successfully learned"

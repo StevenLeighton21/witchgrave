@@ -1,0 +1,34 @@
+<%= form_for(@fgp_soldier) do |f| %>
+  <% if @fgp_soldier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fgp_soldier.errors.count, "error") %> prohibited this soldier from being saved:</h2>
+
+      <ul>
+      <% @fgp_soldier.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+<div class="textarea">
+  <%= f.label :class, 'Select Soldier Type' %>
+  <%= collection_select :fgp_soldier, :class_name, @default_soldiers, :class_name, :class_name_with_cost, {prompt: true}%>
+</div>
+
+<div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Chronomancer">
+
+</div>
+
+<%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
+ 
+  <div class="actions">
+      <%= f.submit "Hire Solder", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

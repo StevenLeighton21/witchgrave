@@ -210,7 +210,7 @@ DefaultSpell.create!(discipline:    "Chronomancer",
                      This can effectively create a doorway sized hole in the structure. This spell can also be used to collapse a section of floor beneath a figure standing above ground level. The affected model must pass a Will roll
                      against the casting roll or fall down to the next level down, suffering fall damage as appropriate.")
 
-DefaultSpell.create!(discipline:    "Chronomancer",
+DefaultSpell.create!(discipline:    "Elementalist",
                      name:          "Call Storm",
                      casting_value: 12,
                      range:         "Area of Effect",
