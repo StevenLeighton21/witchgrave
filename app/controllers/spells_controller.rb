@@ -21,6 +21,7 @@ DISCIPLINES = [
 
   def edit
     @spell = Spell.find(params[:id])
+    level_up
   end
 
   def index
@@ -30,10 +31,23 @@ DISCIPLINES = [
   end
 
   def update
-    @spell = Spell.find(params[:id])
+    # @spell = Spell.find(params[:id])
 
-    if @spell.update_attributes(spell_params)
-      flash[:success] = "Spell updated"
+    # if @spell.update_attributes(spell_params)
+    #   flash[:success] = "Spell updated"
+    #   redirect_to frost_grave_participant_path(@spell.frost_grave_participant_id)
+    # else
+    #   render 'edit'
+    # end
+  end
+
+  def level_up
+    @spell = Spell.find(params[:id])
+    current_cast = @spell.casting_value.to_i
+    new_cast = params[:undo] == "true" ? current_cast + 2 : current_cast - 2
+
+    if @spell.update_attributes(:casting_value => new_cast)
+      flash[:success] = "Spell Updated!"
       redirect_to frost_grave_participant_path(@spell.frost_grave_participant_id)
     else
       render 'edit'
