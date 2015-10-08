@@ -41,10 +41,12 @@ DISCIPLINES = [
   end
 
   def create
+    #todo : much suck
     @participant = FrostGraveParticipant.find(params[:frost_grave_participant_id])
     @default_spells = DefaultSpell.all
-    #todo fix dupe id bug 
-    @spell = @participant.spells.build(@default_spells.find_by_name(params[:spell_name]).clone.attributes)
+    spell_attr = @default_spells.find_by_name(params[:spell_name]).clone.attributes.merge(:id => nil)
+    
+    @spell = @participant.spells.build(spell_attr)
     if @participant.save
       flash[:success] = "Spell successfully learned"
       redirect_to frost_grave_participant_path(@participant.id)
