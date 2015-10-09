@@ -74,48 +74,72 @@
   <%= f.text_area :wizard_injuries %>
 </div>
 
-<div class="field">
-  <%= f.label :apprentice_name %>
-  <%= f.text_field :apprentice_name %>
-</div>
+<% if @participant.apprentice_hired == true %>
+  <div class="field">
+    <%= f.label :apprentice_name %>
+    <%= f.text_field :apprentice_name %>
+  </div>
 
-<div>
-  <table>
-  <tr>
-    <th><%= f.label :apprentice_move, 'Move'%></th>
-    <th><%= f.label :apprentice_armour, 'Armour'%></th>
-  </tr>
+  <div>
+    <table>
     <tr>
-      <td> <%= f.text_field :apprentice_move %></td>
-      <td> <%= f.text_field :apprentice_armour %></td>
+      <th><%= f.label :apprentice_move, 'Move'%></th>
+      <th><%= f.label :apprentice_armour, 'Armour'%></th>
     </tr>
-  </table>
-</div>
+      <tr>
+        <td> <%= f.text_field :apprentice_move %></td>
+        <td> <%= f.text_field :apprentice_armour %></td>
+      </tr>
+    </table>
+  </div>
 
-<div class="field">
-  <%= f.label :apprentice_injuries, 'Apprentice Injuries'%>
-  <%= f.text_area :apprentice_injuries %>
-</div>
+  <div class="field">
+    <%= f.label :apprentice_injuries, 'Apprentice Injuries'%>
+    <%= f.text_area :apprentice_injuries %>
+  </div>
 
-<div class="field">
-  <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
-  <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: @participant.apprentice_inventory_2} %>
-</div>
+  <div class="field">
+    <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
+    <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: @participant.apprentice_inventory_2} %>
+  </div>
 
-<div class="field">
-  <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
-  <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
-</div>
+  <div class="field">
+    <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
+    <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
+  </div>
 
-<div class="field">
-  <%= f.label :apprentice_inventory_3 %>
-  <%= f.text_field :apprentice_inventory_3 %>
-</div>
-<div class="field">
-  <%= f.label :apprentice_inventory_4 %>
-  <%= f.text_field :apprentice_inventory_4 %>
-</div>
+  <div class="field">
+    <%= f.label :apprentice_inventory_3 %>
+    <%= f.text_field :apprentice_inventory_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :apprentice_inventory_4 %>
+    <%= f.text_field :apprentice_inventory_4 %>
+  </div>
+<% else %>
+  <div class="apprentice_checkbox">
+    <%= f.label :apprentice_hired, 'Hire Apprentice? (200GC)' %>
+    <%= f.check_box :apprentice_hired %>
+  </div>
 
+  <div class="js-dependent-fields" data-checkbox-id="frost_grave_participant_apprentice_hired" data-checkbox-value="true">
+
+    <div class="field">
+      <%= f.label :apprentice_name %>
+      <%= f.text_field :apprentice_name %>
+    </div>
+    <div class="field">
+      <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
+      <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: 1} %>
+    </div>
+
+    <div class="field">
+     <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
+     <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
+    </div>
+
+  </div>
+<% end %>
 
  <div class="actions">
       <%= f.submit "Update Warband", class: "btn btn-primary" %>
