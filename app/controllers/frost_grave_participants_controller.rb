@@ -123,7 +123,8 @@ class FrostGraveParticipantsController < ApplicationController
         :gold_earned,
         :gold_spent,
         :starting_cache,
-        :apprentice_hired
+        :apprentice_hired,
+        :campaign_password
         ).merge(user_id: current_user.id,
                 wizard_xp: 0,
                 wizard_level: 1,

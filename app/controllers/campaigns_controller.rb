@@ -38,7 +38,7 @@ class CampaignsController < ApplicationController
       redirect_to current_user
         
     else
-      render'new'
+      redirect_to :back
     end
   end
 
@@ -50,7 +50,7 @@ class CampaignsController < ApplicationController
 
   private
     def campaigns_params
-      params.require(:campaign).permit(:name, :description).merge(user_id: current_user.id)
+      params.require(:campaign).permit(:name, :description, :campaign_password).merge(user_id: current_user.id)
     end
 
     def correct_user

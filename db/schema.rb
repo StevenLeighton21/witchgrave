@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007183345) do
+ActiveRecord::Schema.define(version: 20151009181811) do
 
   create_table "base_of_operations", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20151007183345) do
     t.text     "description"
     t.integer  "user_id"
     t.integer  "member"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "campaign_password"
   end
 
   add_index "campaigns", ["user_id", "created_at"], name: "index_campaigns_on_user_id_and_created_at"
@@ -156,6 +157,7 @@ ActiveRecord::Schema.define(version: 20151007183345) do
     t.text     "apprentice_injuries"
     t.integer  "starting_cache"
     t.boolean  "apprentice_hired"
+    t.string   "campaign_password"
   end
 
   add_index "frost_grave_participants", ["campaign_id", "created_at"], name: "index_frost_grave_participants_on_campaign_id_and_created_at"

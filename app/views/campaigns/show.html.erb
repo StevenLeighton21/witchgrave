@@ -5,6 +5,7 @@
 </h1>
 
 <div>
+
 <p>
 
   <%= @campaigns.description %>
@@ -20,5 +21,6 @@
 	<%= link_to "Edit Campaign", edit_campaign_path(@campaigns.id), class: "btn btn-lg btn-primary" %>
 	<%= link_to "Delete Campaign", delete_campaign_path(:id => @campaigns.id), method: :delete,
                                        data: { confirm: "You sure?" } , class: "btn btn-lg btn-primary"%>
+    <p><strong> The Join password for this campaign is: <%= @campaigns.campaign_password %> </strong></p>
 <% end %>
 </div>

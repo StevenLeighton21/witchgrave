@@ -59,6 +59,11 @@
 
 </div>
 
+  <div class="field">
+   <%= f.label :campaign_password, 'Enter the Join password (The campaign creator can set or edit this)' %>
+   <%= f.text_field :campaign_password %>
+  </div>
+
 <%= f.hidden_field :campaign_id, :value => params[:c_id] %>
 
 
