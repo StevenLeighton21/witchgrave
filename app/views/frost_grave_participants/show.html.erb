@@ -144,8 +144,8 @@
               <td> <%= link_to "Sell for #{item.sale_price}", fgp_item_path(item), method: :delete, data: { confirm: "You sure?" }%> </td>
             </tr>
           <% end %>
+          </table>
         <% end %>
-        </table>
       </div>
   <% if @participant.user_id == current_user.id %>
     <div>
