@@ -1,16 +1,18 @@
 <% provide(:title, 'All Campaigns') %>
-<h1>All Campaigns</h1>
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">  
+	<h1>All Campaigns</h1>
 
-<%= will_paginate %>
+	<%= will_paginate %>
 
-<ul class="campaigns">
-  <% @campaigns.each do |campaign| %>
-    <li>
+	<ul class="campaigns">
+  		<% @campaigns.each do |campaign| %>
+    		<li>
       
-      <%= link_to campaign.name, campaign %>
-      </li>
-  <% end %>
-</ul>
+      			<%= link_to campaign.name, campaign %>
+      		</li>
+  		<% end %>
+	</ul>
 
-<%= will_paginate %>
+	<%= will_paginate %>
 
+</div>

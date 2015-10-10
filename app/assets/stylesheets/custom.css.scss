@@ -5,6 +5,27 @@
 
 body {
   padding-top: 60px;
+  background-color: #313d4b;
+  font: sans-serif;
+}
+
+#responsive_drop{
+  float: right;
+  margin-right: 10px;
+  height: 100%;
+  width: 45px;
+  margin-top: 10px;
+}
+
+#content{
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 10px;
+}
+
+#floater{
+  float: right;
 }
 
 section {
@@ -48,11 +69,31 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+
 }
+.c_label {
+  color: #aacad9;
+  font-size: 0.8em;
+  margin-bottom: 0px;
+}
+.output {
+  color: #506270;
+  font-size: 1.2em;
+  margin-bottom: 0px;
+}
+
 
 table {
   width: 100%;
   margin-bottom: 20px;
+  tbody {
+    table-striped{
+      tr {
+        border-color: #000;
+        border-width: 1px;
+      }
+    }
+  }
 }
 
 td {
@@ -137,6 +178,10 @@ aside {
       margin-top: 0px;
     }
   }
+}
+
+#icon_bar_c{
+  color: #fff;
 }
 
 .gravatar {
@@ -238,6 +283,7 @@ input {
     padding-top: 0;
   }
   .content {
+
     display: block;
     margin-left: 60px;
     img {
@@ -270,3 +316,4 @@ span.picture {
     border: 0;
   }
 }
+
