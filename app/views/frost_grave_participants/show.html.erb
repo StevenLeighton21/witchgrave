@@ -42,8 +42,7 @@
         <td><%= @participant.wizard_armour %></td>
         <td><%= @participant.wizard_will %></td>
         <td><%= @participant.wizard_health %></td>
-        <td><%= @participant.wizard_inventory_1 %>, <%= @participant.wizard_inventory_2 %>, <%= @participant.wizard_inventory_3 %>,
-            <%= @participant.wizard_inventory_4 %>, <%= @participant.wizard_inventory_5 %></td>
+        <td><%= @participant.string_for_wizard_inventory %></td>
       </tr>
   </table>
 </div>
@@ -75,8 +74,7 @@
           <td><%= @participant.apprentice_armour %></td>
           <td><%= @participant.apprentice_will %></td>
           <td><%= @participant.apprentice_health %></td>
-          <td><%= @participant.apprentice_inventory_1 %>, <%= @participant.apprentice_inventory_2 %>,
-              <%= @participant.apprentice_inventory_3 %>, <%= @participant.apprentice_inventory_4 %></td>
+          <td><%= @participant.string_for_apprentice_inventory %></td>
         </tr>
     </table>
   </div>
@@ -97,9 +95,11 @@
           <th>Casting Value</th>
           <th>Range</th>
           <th>Description</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <% if @participant.user_id == current_user.id %>
+            <th></th>
+            <th></th>
+            <th></th>
+          <% end %>
         </tr>
         <% @spells.each do |spell| %>
           <tr> 
@@ -141,9 +141,11 @@
             <th>Cost</th>
             <th>Notes</th>
             <th>Item</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <% if @participant.user_id == current_user.id %>
+              <th></th>
+              <th></th>
+              <th></th>
+            <% end %>
           </tr>
           <% @soldiers.each do |soldier| %>
             <tr>
@@ -187,7 +189,9 @@
             <th>Name</th>
             <th>Description</th>
             <th>Cost</th>
-            <th></th>
+            <% if @participant.user_id == current_user.id %>
+              <th></th>
+            <% end %>
           </tr>
           <% if @items.any? %>
           <% @items.each do |item| %>
