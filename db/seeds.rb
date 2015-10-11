@@ -435,7 +435,7 @@ DefaultSpell.create!(discipline:    "Necromancer",
                      name:          "Bones of the Earth",
                      casting_value: 10,
                      range:         "Line of Sight",
-                     description:   "A skeletal hand reaches out of the ground and grabs the target’s ankle. The target is held fast and may not move. Anymagic form of movement will allow the target to escape the hand. Otherwise, the only way to escape the hand is to fight. The hand has Fight +0 and Health 1. If the hand is damaged, it vanishes, and the target is free. This spell may only be cast against a target that is standing on ground level. The maximum range for this spell is 18”.")
+                     description:   "A skeletal hand reaches out of the ground and grabs the target’s ankle. The target is held fast and may not move. Any magic form of movement will allow the target to escape the hand. Otherwise, the only way to escape the hand is to fight. The hand has Fight +0 and Health 1. If the hand is damaged, it vanishes, and the target is free. This spell may only be cast against a target that is standing on ground level. The maximum range for this spell is 18”.")
 
 DefaultSpell.create!(discipline:    "Necromancer",
                      name:          "Control Undead",

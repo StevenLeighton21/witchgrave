@@ -1,11 +1,8 @@
 <li id="campaign-<%= campaign.id %>">
   
-  <span class="user"><%= link_to campaign.user.name, campaign.user %></span>
-  <span class="content"><%= link_to campaign.name, campaign %></span>
-  <span class="content"><%= campaign.description %></span>
+  <p>Created by: <%= link_to campaign.user.name, campaign.user %></p>
+  <p>Name: <%= link_to campaign.name, campaign %></p>
+  <p><%= campaign.description %></p>
   
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(campaign.created_at) %> ago.
-  </span>
-      <%= link_to "join", new_frost_grave_participant_path(:c_id => campaign.id) %>
+  <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_frost_grave_participant_path(:c_id => campaign.id), class: "btn btn-default" %>
 </li>

@@ -19,7 +19,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Chronomancer">
   <% @chrono = @default_spells.where(:discipline => "Chronomancer") %>
   <% @chrono.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -29,7 +29,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Elementalist">
   <% @elem = @default_spells.where(:discipline => "Elementalist") %>
   <% @elem.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -39,7 +39,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Enchanter">
   <% @ench = @default_spells.where(:discipline => "Enchanter") %>
   <% @ench.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -49,7 +49,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Illusionist">
   <% @illu = @default_spells.where(:discipline => "Illusionist") %>
   <% @illu.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -59,7 +59,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Necromancer">
   <% @necro = @default_spells.where(:discipline => "Necromancer") %>
   <% @necro.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -69,7 +69,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Sigilist">
   <% @sig = @default_spells.where(:discipline => "Sigilist") %>
   <% @sig.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -79,7 +79,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Soothsayer">
   <% @sooth = @default_spells.where(:discipline => "Soothsayer") %>
   <% @sooth.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -89,7 +89,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Summoner">
   <% @summ = @default_spells.where(:discipline => "Summoner") %>
   <% @summ.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -99,7 +99,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Thaumaturge">
   <% @thaum = @default_spells.where(:discipline => "Thaumaturge") %>
   <% @thaum.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>
@@ -109,7 +109,7 @@
 <div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Witch">
   <% @witch = @default_spells.where(:discipline => "Witch") %>
   <% @witch.each do |spell| %>
-    <div class="selectable_spell">
+    <div class="col-xs-12 .col-sm-6 .col-md-8" id="selectable_spell">
     <p> <strong><%= spell.name %> | <%= spell.casting_value %> | <%= spell.range %> | </strong> <%= spell.description %> </p>
     <%= link_to 'Learn This Spell', spells_path({:action => :create, :spell_name => spell.name, :frost_grave_participant_id => params[:fgp_id]}), :method => :post, class: "btn btn-primary" %>
     </div>

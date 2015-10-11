@@ -44,7 +44,7 @@ DISCIPLINES = [
   def level_up
     @spell = Spell.find(params[:id])
     current_cast = @spell.casting_value.to_i
-    new_cast = params[:undo] == "true" ? current_cast + 2 : current_cast - 2
+    new_cast = params[:undo] == "true" ? current_cast + 1 : current_cast - 1
 
     if @spell.update_attributes(:casting_value => new_cast)
       flash[:success] = "Spell Updated!"

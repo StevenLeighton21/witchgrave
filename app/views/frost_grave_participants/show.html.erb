@@ -125,6 +125,60 @@
 </div>
 
 <div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <p class="c_label">Soldiers</p>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <% if @soldiers.any? %>
+          <tr>
+            <th>Name</th>
+            <th>Class</th> 
+            <th>Move</th>
+            <th>Fight</th>
+            <th>Shoot</th>
+            <th>Armour</th>
+            <th>Will</th>
+            <th>Health</th>
+            <th>Cost</th>
+            <th>Notes</th>
+            <th>Item</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @soldiers.each do |soldier| %>
+            <tr>
+              <td><%= soldier.name %></td>
+              <td><%= soldier.class_name %></td>
+              <td><%= soldier.move %></td>
+              <td><%= soldier.fight %></td>
+              <td><%= soldier.shoot %></td>
+              <td><%= soldier.armour %></td>
+              <td><%= soldier.will %></td>
+              <td><%= soldier.health %></td>
+              <td><%= soldier.cost %></td>
+              <td><%= soldier.notes %></td>
+              <td><%= soldier.item %></td>
+              <% if @participant.user_id == current_user.id %>
+                <td>  <%= link_to 'Equip', equip_soldier_path(:id => soldier.id) %> </td>
+                <td>  <%= link_to 'Died', fgp_soldier_path(:id => soldier.id, :sell => "false"), method: :delete,
+                                             data: { confirm: "You sure? You will not get any GC and this cannot be undone!" } %></td>
+                <td>  <%= link_to 'Release', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
+                                             data: { confirm: "You sure? This cannot be undone!" } %></td>
+              <% end %>                                         
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <% if @participant.user_id == current_user.id %>
+      <div>
+        <%= link_to 'Hire a Soldier', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
+</div>
+
+
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
   
   <p class="c_label">Item Stash</p> 
       <div class="table-responsive">
@@ -174,59 +228,6 @@
       <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
     <% end %>
   <% end %> 
-</div>
-
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
-  <p class="c_label">Soldiers</p>
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered">
-        <% if @soldiers.any? %>
-          <tr>
-            <th>Name</th>
-            <th>Class</th> 
-            <th>Move</th>
-            <th>Fight</th>
-            <th>Shoot</th>
-            <th>Armour</th>
-            <th>Will</th>
-            <th>Health</th>
-            <th>Cost</th>
-            <th>Notes</th>
-            <th>Item</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <% @soldiers.each do |soldier| %>
-            <tr>
-              <td><%= soldier.name %></td>
-              <td><%= soldier.class_name %></td>
-              <td><%= soldier.move %></td>
-              <td><%= soldier.fight %></td>
-              <td><%= soldier.shoot %></td>
-              <td><%= soldier.armour %></td>
-              <td><%= soldier.will %></td>
-              <td><%= soldier.health %></td>
-              <td><%= soldier.cost %></td>
-              <td><%= soldier.notes %></td>
-              <td><%= soldier.item %></td>
-              <% if @participant.user_id == current_user.id %>
-                <td>  <%= link_to 'Equip', '#' %> </td>
-                <td>  <%= link_to 'Died', fgp_soldier_path(:id => soldier.id, :sell => "false"), method: :delete,
-                                             data: { confirm: "You sure? You will not get any GC and this cannot be undone!" } %></td>
-                <td>  <%= link_to 'Release', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
-                                             data: { confirm: "You sure? This cannot be undone!" } %></td>
-              <% end %>                                         
-            </tr>
-          <% end %>
-        <% end %>
-      </table>
-    </div>
-    <% if @participant.user_id == current_user.id %>
-      <div>
-        <%= link_to 'Hire a Soldier', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
-      </div>
-    <% end %>
 </div>
 
 <div class="col-xs-12 .col-sm-6 .col-md-8", id="content">  
