@@ -28,7 +28,7 @@ class FgpSoldiersController < ApplicationController
   def injure_soldier
     @fgp_soldier = FgpSoldier.find(params[:id])
 
-    if @fgp_soldier.update_attribute(:status, "danger")
+    if @fgp_soldier.update_attributes(:status => "danger", :skip_callbacks => true)
       flash[:success] = "Soldier updated"
       redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
     else
@@ -40,7 +40,7 @@ class FgpSoldiersController < ApplicationController
   def recover_soldier
     @fgp_soldier = FgpSoldier.find(params[:id])
 
-    if @fgp_soldier.update_attribute(:status, "")
+    if @fgp_soldier.update_attributes(:status => "", :skip_callbacks => true)
       flash[:success] = "Soldier recovered"
       redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
     else

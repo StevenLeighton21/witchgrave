@@ -1,7 +1,8 @@
 class FgpSoldier < ActiveRecord::Base
+  cattr_accessor :skip_callbacks
   belongs_to :frost_grave_participant
 
-	after_save :update_cache
+	after_save :update_cache, :unless => :skip_callbacks
 	before_destroy :update_sale_cache
 
   def update_cache
