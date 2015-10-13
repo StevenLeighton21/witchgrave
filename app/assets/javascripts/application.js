@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require dependent-fields
 //= require underscore
 //= require_tree .
@@ -22,3 +22,4 @@
 $(document).ready(function() {
     DependentFields.bind()
 })
+

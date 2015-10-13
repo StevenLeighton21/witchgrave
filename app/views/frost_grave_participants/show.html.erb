@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
   <p class="c_label">Warband Name </p>
@@ -18,9 +19,15 @@
     </div>
     <div class="col-md-3">
       <p class="c_label"> XP </p>  <p class="output"> <%= @participant.wizard_xp %> </p>
+      <% if current_user.id == @participant.user_id %>
+         <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_xp_path(:id => @participant.id), {'data-toggle' =>  "modal", 'data-target' => '#xp-modal', class: "btn btn-default"} %>
+      <% end %>
     </div>
     <div class="col-md-3">
       <p class="c_label"> Gold Cache </p>  <p class="output"> <%= @participant.gold_cache %></p>
+      <% if current_user.id == @participant.user_id %>
+        <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
+      <% end %>
     </div>
   </div>
 </p>
@@ -199,7 +206,9 @@
               <td> <%= item.name %> </td>
               <td> <%= item.description %> </td>
               <td> <%= item.cost %> </td>
+              <% if @participant.user_id == current_user.id %>
               <td> <%= link_to "Sell for #{item.sale_price}", fgp_item_path(item), method: :delete, data: { confirm: "You sure?" }%> </td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>
@@ -242,6 +251,56 @@
      <%= link_to "Delete this Warband", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
                                            data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
     <% end %>
+  </div>
+</div>
+
+<!-- Modal XP-->
+<div class="modal fade" id="xp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add XP</h4>
+      </div>
+      <div class="modal-body">
+          <div class="modal-body">
+            <div class="field">
+              <%= form_tag '/add_xp' do -%>
+                <%= text_field_tag :wizard_xp, nil %>
+                <%= hidden_field_tag :id, @participant.id %>
+            </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <%= submit_tag "Add XP" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal gold-->
+<div class="modal fade" id="gold-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Gold</h4>
+      </div>
+      <div class="modal-body">
+          <div class="modal-body">
+            <div class="field">
+              <%= form_tag '/add_gold' do -%>
+                <%= text_field_tag :gold_earned, nil %>
+                <%= hidden_field_tag :id, @participant.id %>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Add Gold" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'static_pages#home'
+  get    'show_add_gold' => 'frost_grave_participants#show_add_gold', :as => :show_add_gold
+  post    'add_gold'     => 'frost_grave_participants#add_gold', :as => :add_gold
+  get    'show_add_xp'  => 'frost_grave_participants#show_add_xp', :as => :show_add_xp
+  post   'add_xp'       => 'frost_grave_participants#add_xp', :as => :add_xp
   get    'create_base'  => 'base_of_operations#new'
   get    'base_of_operations_index'  => 'base_of_operations#index'
   post   'base_of_operations_index' => 'base_of_operations#create'

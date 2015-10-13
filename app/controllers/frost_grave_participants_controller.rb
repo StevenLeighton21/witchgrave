@@ -34,6 +34,56 @@ class FrostGraveParticipantsController < ApplicationController
     @items       = @participant.fgp_items.all
   end
 
+  def add_gold
+    @participant = FrostGraveParticipant.find(params[:id])
+    base_gold = @participant.gold_earned.to_i
+    gold = params[:gold_earned].to_i
+    gold = base_gold + gold
+    @participant.update_attribute(:gold_earned, gold)
+    current_cache = @participant.gold_cache.to_i
+    new_cache = gold - @participant.gold_spent.to_i
+
+    if @participant.update_attribute(:gold_cache, new_cache)
+      flash[:success] = "Gold added"
+      redirect_to frost_grave_participant_path(@participant.id)
+    else
+      flash[:warning] = "Gold Failed to update"
+      redirect_to frost_grave_participant_path(@participant.id)
+    end
+  end
+
+  def show_add_gold
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def add_xp
+    @participant = FrostGraveParticipant.find(params[:id])
+    base_xp = @participant.wizard_xp.to_i
+    xp = params[:wizard_xp].to_i
+    total_xp = base_xp + xp
+    level = total_xp / 100
+    level = level.floor + 1
+    @participant.update_attribute(:wizard_level, level)
+
+    if @participant.update_attribute(:wizard_xp, total_xp)
+      flash[:success] = "XP added"
+      redirect_to frost_grave_participant_path(@participant.id)
+    else
+      flash[:warning] = "XP Failed to update"
+      redirect_to frost_grave_participant_path(@participant.id)
+    end
+  end
+
+  def show_add_xp
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def update
     # TODO this is hella ugly, split into helper methods
     @participant = FrostGraveParticipant.find(params[:id])

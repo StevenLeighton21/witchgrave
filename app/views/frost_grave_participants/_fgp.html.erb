@@ -20,11 +20,6 @@
   <%= f.text_field :wizard_name %>
 </div>
 
-<div class="field">
-  <%= f.label :wizard_xp %>
-  <%= f.text_field :wizard_xp %>
-</div>
-
 <div>
   <table>
   <tr>
@@ -53,7 +48,7 @@
 
 <div class="field">
   <%= f.label :wizard_inventory_2, 'Wizard Additional Weapon' %>
-  <%= select :frost_grave_participant, :wizard_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None', selectd: @participant.wizard_inventory_2}%>
+  <%= select :frost_grave_participant, :wizard_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None', selected: @participant.wizard_inventory_2}%>
 </div>
 
 <div class="field">
@@ -100,12 +95,12 @@
 
   <div class="field">
     <%= f.label :apprentice_inventory_1, 'Apprentice Basic Weapon' %>
-    <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: @participant.apprentice_inventory_2} %>
+    <%= select :frost_grave_participant, :apprentice_inventory_1, FrostGraveParticipantsController::STARTING_WEAPONS, {selected: @participant.apprentice_inventory_1} %>
   </div>
 
   <div class="field">
     <%= f.label :apprentice_inventory_2, 'Apprentice Additional Weapon' %>
-    <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None'}%>
+    <%= select :frost_grave_participant, :apprentice_inventory_2, FrostGraveParticipantsController::ADDITIONAL_WEAPONS, {include_blank: 'None', selected: @participant.apprentice_inventory_2} %>
   </div>
 
   <div class="field">
