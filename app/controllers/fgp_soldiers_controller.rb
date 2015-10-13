@@ -25,6 +25,30 @@ class FgpSoldiersController < ApplicationController
     end
   end
 
+  def injure_soldier
+    @fgp_soldier = FgpSoldier.find(params[:id])
+
+    if @fgp_soldier.update_attribute(:status, "danger")
+      flash[:success] = "Soldier updated"
+      redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
+    else
+      flash[:warning] = "Soldier failed to update"
+      redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
+    end
+  end
+
+  def recover_soldier
+    @fgp_soldier = FgpSoldier.find(params[:id])
+
+    if @fgp_soldier.update_attribute(:status, "")
+      flash[:success] = "Soldier recovered"
+      redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
+    else
+      flash[:warning] = "Soldier failed to update"
+      redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
+    end
+  end
+
   def create
     @participant = FrostGraveParticipant.find(params[:fgp_soldier][:frost_grave_participant_id])
     @default_soldiers = Soldier.all
