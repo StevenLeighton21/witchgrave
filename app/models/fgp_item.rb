@@ -10,9 +10,11 @@ class FgpItem < ActiveRecord::Base
   end
 
   def update_sale_cache
-  	current_spend = self.frost_grave_participant.gold_earned
-  	self.frost_grave_participant.update_attribute(:gold_earned, current_spend + self.sale_price)
-  	gold_cache
+    if self.sale_price > 0
+  	  current_spend = self.frost_grave_participant.gold_earned
+  	  self.frost_grave_participant.update_attribute(:gold_earned, current_spend + self.sale_price)
+  	  gold_cache
+    end
   end
 
   private

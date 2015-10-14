@@ -20,9 +20,86 @@ body {
 
 #content{
   background-color: #ffffff;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 15px 15px 15px 15px;
   margin-bottom: 10px;
+}
+
+#spell-box{
+  margin-bottom: 10px;
+  border-bottom-color: #bbb; 
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+#cast-box-green{
+  text-align: center;
+  background-color: #bedeb9;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+    border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+#add-box{
+  text-align: center;
+  p{
+    text-align: center;
+  }
+}
+
+#cast-box-blue{
+  text-align: center;
+  background-color: #eef4f7;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+    border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+#cast-box-orange{
+  text-align: center;
+  background-color: #ffd6b1;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+    border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+#cast-box-red{
+  text-align: center;
+  background-color: #ffc1b9;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+    border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+#stat-box{
+  text-align: center;
+  background-color: #eef4f7;
+  border-radius: 10px;
+  padding: 5px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+#soldier-buttons{
+  margin: 5px;
+}
+
+#soldier-danger{
+  border-radius: 10px;
+  background-color: #ffc1b9;
 }
 
 #floater{

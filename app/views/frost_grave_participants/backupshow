@@ -1,0 +1,310 @@
+
+<p id="notice"><%= notice %></p>
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <p class="c_label">Warband Name </p>
+  <p class="output">
+    <%= @participant.name %>
+  </p>
+</div>
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="c_label"> Wizard </p> <p class="output"> <%= @participant.wizard_name %> </p>
+    </div>
+    <div class="col-md-3">
+      <p class="c_label"> School of Magic </p> <p class ="output"><%= @participant.wizard_discipline %> </p>
+    </div>
+    <div class="col-md-3">
+      <p class="c_label"> Level </p> <p class="output"> <%= @participant.wizard_level %> </p>
+    </div>
+    <div class="col-md-3">
+      <p class="c_label"> XP </p>  <p class="output"> <%= @participant.wizard_xp %> </p>
+      <% if current_user.id == @participant.user_id %>
+         <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_xp_path(:id => @participant.id), {'data-toggle' =>  "modal", 'data-target' => '#xp-modal', class: "btn btn-default"} %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <p class="c_label"> Gold Cache </p>  <p class="output"> <%= @participant.gold_cache %></p>
+      <% if current_user.id == @participant.user_id %>
+        <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
+      <% end %>
+    </div>
+  </div>
+</p>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Move</th>
+      <th>Fight</th>
+      <th>Shoot</th>
+      <th>Armour</th>
+      <th>Will</th>
+      <th>Health</th>
+      <th>Inventory</th>
+    </tr>
+        <tr>
+        <td><%= @participant.wizard_move %></td>
+        <td><%= @participant.wizard_fight %></td>
+        <td><%= @participant.wizard_shoot %></td>
+        <td><%= @participant.wizard_armour %></td>
+        <td><%= @participant.wizard_will %></td>
+        <td><%= @participant.wizard_health %></td>
+        <td><%= @participant.string_for_wizard_inventory %></td>
+      </tr>
+  </table>
+</div>
+  <div>
+    <p class="c_label">Wizard Injuries</p>
+    <p class="output"><%= @participant.wizard_injuries %></p>
+  </div>
+
+</div>
+<% if @participant.apprentice_name != "" %>
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <p class="c_label">Apprentice </p>
+  <p class="output"> <%= @participant.apprentice_name %></p>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <th>Move</th>
+        <th>Fight</th>
+        <th>Shoot</th>
+        <th>Armour</th>
+        <th>Will</th>
+        <th>Health</th>
+        <th>Inventory</th>
+      </tr>
+          <tr>
+          <td><%= @participant.apprentice_move %></td>
+          <td><%= @participant.apprentice_fight %></td>
+          <td><%= @participant.apprentice_shoot %></td>
+          <td><%= @participant.apprentice_armour %></td>
+          <td><%= @participant.apprentice_will %></td>
+          <td><%= @participant.apprentice_health %></td>
+          <td><%= @participant.string_for_apprentice_inventory %></td>
+        </tr>
+    </table>
+  </div>
+  <div>
+    <p class="c_label">Apprentice Injuries</p>
+    <p class="output"><%= @participant.apprentice_injuries %></p>
+  </div>
+</div>
+<% end %>
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <% if @spells.any? %>
+    <p class="c_label">Spells</p>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Discipline</th>
+          <th>Spell Name</th>
+          <th>Casting Value</th>
+          <th>Range</th>
+          <th>Description</th>
+          <% if @participant.user_id == current_user.id %>
+            <th></th>
+            <th></th>
+            <th></th>
+          <% end %>
+        </tr>
+        <% @spells.each do |spell| %>
+          <tr> 
+            <td><%= spell.discipline %></td> 
+            <td><%= spell.name %></td> 
+            <td><%= spell.string_for_casting_value %></td> 
+            <td><%= spell.range %></td> 
+            <td><%= spell.description %></td> 
+            <% if @participant.user_id == current_user.id %>
+              <td><%= link_to 'Level Up', edit_spell_path(spell.id, :undo => "false") %> </td>
+              <td><%= link_to 'Undo', edit_spell_path(spell.id, :undo => "true") %> </td>
+              <td><%= link_to 'Delete', delete_spell_path(:id => spell.id), method: :delete,
+                                           data: { confirm: "You sure?" } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+  <% if @participant.user_id == current_user.id %>
+    <%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>
+
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <p class="c_label">Soldiers</p>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <% if @soldiers.any? %>
+          <tr>
+            <th>Name</th>
+            <th>Class</th> 
+            <th>Move</th>
+            <th>Fight</th>
+            <th>Shoot</th>
+            <th>Armour</th>
+            <th>Will</th>
+            <th>Health</th>
+            <th>Cost</th>
+            <th>Notes</th>
+            <th>Item</th>
+            <% if @participant.user_id == current_user.id %>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            <% end %>
+          </tr>
+          <% @soldiers.each do |soldier| %>
+            <tr class=<%= soldier.status %>>
+              <td><%= soldier.name %></td>
+              <td><%= soldier.class_name %></td>
+              <td><%= soldier.move %></td>
+              <td><%= soldier.fight %></td>
+              <td><%= soldier.shoot %></td>
+              <td><%= soldier.armour %></td>
+              <td><%= soldier.will %></td>
+              <td><%= soldier.health %></td>
+              <td><%= soldier.cost %></td>
+              <td><%= soldier.notes %></td>
+              <td><%= soldier.item %></td>
+              <% if @participant.user_id == current_user.id %>
+                <td>  <%= link_to 'Equip', equip_soldier_path(:id => soldier.id) %> </td>
+                <td> <%= link_to  'Injured!', injure_soldier_path(:id => soldier.id) %> </td>
+                <td> <%= link_to  'Recovered!', recover_soldier_path(:id => soldier.id) %> </td>
+                <td>  <%= link_to 'Died!', fgp_soldier_path(:id => soldier.id, :sell => "false"), method: :delete,
+                                             data: { confirm: "You sure? You will not get any GC and this cannot be undone!" } %></td>
+                <td>  <%= link_to 'Release', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
+                                             data: { confirm: "You sure? This cannot be undone!" } %></td>
+              <% end %>                                         
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <% if @participant.user_id == current_user.id %>
+      <div>
+        <%= link_to 'Hire a Soldier', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
+</div>
+
+
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  
+  <p class="c_label">Item Stash</p> 
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <% if @participant.user_id == current_user.id %>
+              <th></th>
+            <% end %>
+          </tr>
+          <% if @items.any? %>
+          <% @items.each do |item| %>
+            <tr>
+              <td> <%= item.name %> </td>
+              <td> <%= item.description %> </td>
+              <td> <%= item.cost %> </td>
+              <% if @participant.user_id == current_user.id %>
+              <td> <%= link_to "Sell for #{item.sale_price}", fgp_item_path(item), method: :delete, data: { confirm: "You sure?" }%> </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+        </table>
+      </div>
+  <% if @participant.user_id == current_user.id %>
+    <div>
+      <%= link_to "Loot an Item", new_fgp_item_path(:fgp_id => @participant.id, :looted => "true"), class: "btn btn-lg btn-primary" %>
+      <%= link_to "Purchase an Item", new_fgp_item_path(:fgp_id => @participant.id, :looted => "false"), class: "btn btn-lg btn-primary" %>
+
+    </div>
+  <% end %>
+</div>
+
+
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+  <p class="c_label">Base of Operations</p>
+  <% if @base != nil %>
+    <p class="c_label">Location </p>
+    <p class="output"> <%= @base.location %></p>
+    <p class="c_label">Benefits </p>
+    <p class="output"> <%= @base.effects %></p>
+    <% if @participant.user_id == current_user.id %>
+     <%= link_to 'Change', edit_base_path(:id => @base.id), class: "btn btn-lg btn-primary" %> 
+     <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
+                                         data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  <% else %>
+    <% if @participant.user_id == current_user.id %>
+      <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
+    <% end %>
+  <% end %> 
+</div>
+
+<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">  
+
+  <div style="margin-top:20px">
+    <% if @participant.user_id == current_user.id %>
+     <%= link_to "Update this Warband", edit_frost_grave_participant_path(@participant.id), class: "btn btn-lg btn-primary" %>
+     <%= link_to "Delete this Warband", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
+                                           data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Modal XP-->
+<div class="modal fade" id="xp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add XP</h4>
+      </div>
+      <div class="modal-body">
+          <div class="modal-body">
+            <div class="field">
+              <%= form_tag '/add_xp' do -%>
+                <%= text_field_tag :wizard_xp, nil %>
+                <%= hidden_field_tag :id, @participant.id %>
+            </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <%= submit_tag "Add XP" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal gold-->
+<div class="modal fade" id="gold-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Gold</h4>
+      </div>
+      <div class="modal-body">
+          <div class="modal-body">
+            <div class="field">
+              <%= form_tag '/add_gold' do -%>
+                <%= text_field_tag :gold_earned, nil %>
+                <%= hidden_field_tag :id, @participant.id %>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Add Gold" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -26,6 +26,25 @@ class Spell < ActiveRecord::Base
     end
   end
 
+  def cast_box_for_casting_value
+        wizard_discipline = self.frost_grave_participant.wizard_discipline
+    spell_discipline  = self.discipline
+    cast_value        = self.casting_value.to_i
+    aligned_value     = cast_value.to_i + 2 
+    opposed_value     = cast_value.to_i + 6
+    neutral_value     = cast_value.to_i + 4 
+
+    if wizard_discipline.eql?(spell_discipline) #same
+      return "green"
+    elsif aligned_for(wizard_discipline).include?(spell_discipline)  #aligned
+      return "blue"
+    elsif spell_discipline.eql?(opposed_for(wizard_discipline)) # opposed
+      return "red"
+    else #must be neutral
+      return "orange"
+    end
+  end
+
   def aligned_for(discipline)
     case discipline
     when "Chronomancer"

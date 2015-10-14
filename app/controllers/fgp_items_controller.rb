@@ -35,9 +35,12 @@ end
 
   def destroy
     @fgp_item = FgpItem.find(params[:id])
+    if params[:discard].eql?("true")
+      @fgp_item.update_attribute(:sale_price, 0)
+    end
     @participant = @fgp_item.frost_grave_participant
     @fgp_item.destroy
-    flash[:success] = "Item Sold"
+    flash[:success] = "Item Removed"
     redirect_to frost_grave_participant_path(@participant.id)
   end
 
