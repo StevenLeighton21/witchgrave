@@ -13,7 +13,7 @@
       </div>
         <% if current_user.id == @participant.user_id %>
           <div class="col-xs-2 .col-sm-1" id"add-box">
-          <p class="c_label"> Add Gold </p>
+          <p class="c_label"> Add XP </p>
             <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_xp_path(:id => @participant.id), {'data-toggle' =>  "modal", 'data-target' => '#xp-modal', class: "btn btn-default"} %>
           </div>
         <% end %>
@@ -22,7 +22,7 @@
       </div>
         <% if current_user.id == @participant.user_id %>
           <div class="col-xs-2 .col-sm-1" id"add-box">
-            <p class="c_label"> Add XP </p>
+            <p class="c_label"> Add Gold </p>
             <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
           </div>
         <% end %>

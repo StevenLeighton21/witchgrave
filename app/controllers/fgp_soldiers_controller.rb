@@ -17,7 +17,7 @@ class FgpSoldiersController < ApplicationController
   def update
     @fgp_soldier = FgpSoldier.find(params[:id])
     @default_soldiers = Soldier.all
-    if @fgp_soldier.update_attributes(fgp_soldier_params)
+    if @fgp_soldier.update_attributes(fgp_soldier_params.merge(:skip_callbacks => true))
       flash[:success] = "Soldier updated"
       redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
     else
