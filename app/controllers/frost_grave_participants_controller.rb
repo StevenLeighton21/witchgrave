@@ -146,6 +146,7 @@ class FrostGraveParticipantsController < ApplicationController
   def destroy
     @participant = FrostGraveParticipant.find(params[:id])
     @campaign = @participant.campaign
+    @participant.delete
     @participant.destroy
     flash[:success] = "Warband deleted"
     redirect_to campaign_path(@campaign.id)
