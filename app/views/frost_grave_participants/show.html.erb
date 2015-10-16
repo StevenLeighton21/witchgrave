@@ -1,159 +1,181 @@
 
 <p id="notice"><%= notice %></p>
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="content-dark">
   <div class="row">
-    <div class="col-xs-5 .col-sm-4">
-      <p class="c_label">Warband Name </p>
-      <p class="output">
+    <div class="col-xs-4 col-sm-7 col-md-4">
+      <h1 id="header-l">
         <%= @participant.name %>
-      </p>
+      </h1>
     </div>
-      <div class="col-xs-1 .col-sm-1">
-        <p class="c_label"> XP </p>  <p class="output"> <%= @participant.wizard_xp %> </p>
+    
+    <div class="col-xs-2 col-sm-1 col-md-2">
+      <p class="c_label"> Gold Cache </p>  <p class="output-dark"> <%= @participant.gold_cache %></p>
+    </div>
+    <% if current_user.id == @participant.user_id %>
+      <div class="col-xs-2 col-sm-1 col-md-2" id="add-box">
+        <p class="c_label"> Add Gold </p>
+        <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
       </div>
-        <% if current_user.id == @participant.user_id %>
-          <div class="col-xs-2 .col-sm-1" id"add-box">
-          <p class="c_label"> Add XP </p>
-            <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_xp_path(:id => @participant.id), {'data-toggle' =>  "modal", 'data-target' => '#xp-modal', class: "btn btn-default"} %>
+    
+      <div class="col-xs-2 col-sm-1 col-md-2">
+       <%= link_to "Update", edit_frost_grave_participant_path(@participant.id), class: "btn btn-primary" %>
+      </div>
+      <div class="col-xs-2 col-sm-1 col-md-2">
+         <%= link_to "Delete", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
+                                     data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+      
+  </div>
+</div>
+    
+
+  <div class="col-xs-12 col-sm-12 col-md-6" id="content-dark">
+    <div id="content">
+      <div class="row">
+        <div class="col-xs-3 col-sm-3">
+          <p class="c_label"> Wizard </p> <p class="output"> <%= @participant.wizard_name %> </p>
+        </div>
+        <div class="col-xs-3 col-sm-3">
+          <p class="c_label"> School of Magic </p> <p class ="output"><%= @participant.wizard_discipline %> </p>
+        </div>
+        <div class="col-xs-2 col-sm-2">
+          <p class="c_label"> Level </p> <p class="output"> <%= @participant.wizard_level %> </p>
+        </div>
+          <div class="col-xs-1 col-sm-2">
+            <p class="c_label"> XP </p>  <p class="output"> <%= @participant.wizard_xp %> </p>
           </div>
-        <% end %>
-      <div class="col-xs-2 .col-sm-1">
-        <p class="c_label"> Gold Cache </p>  <p class="output"> <%= @participant.gold_cache %></p>
-      </div>
-        <% if current_user.id == @participant.user_id %>
-          <div class="col-xs-2 .col-sm-1" id"add-box">
-            <p class="c_label"> Add Gold </p>
-            <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
+            <% if current_user.id == @participant.user_id %>
+              <div class="col-xs-2 col-sm-2" id="add-box">
+              <p class="c_label"> Add XP </p>
+                <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_xp_path(:id => @participant.id), {'data-toggle' =>  "modal", 'data-target' => '#xp-modal', class: "btn btn-default"} %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+
+      <div class="row" id="stat-row">
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Move</p><p class="output"><%= @participant.wizard_move %></p>
+        </div>
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Fight</p><p class="output"><%= @participant.wizard_fight %></p>
+        </div>
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Shoot</p><p class="output"><%= @participant.wizard_shoot %></p>
+        </div>
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Armour</p><p class="output"><%= @participant.wizard_armour %></p>
+        </div>
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Will</p><p class="output"><%= @participant.wizard_will %></p>
+        </div>
+        <div class="col-xs-2 col-sm-1" id="stat-box">
+          <p class="c_label">Health</p><p class="output"><%= @participant.wizard_health %></p>
+        </div>
       </div>
-</div>
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
-  <div class="row">
-    <div class="col-xs-3 .col-sm-2">
-      <p class="c_label"> Wizard </p> <p class="output"> <%= @participant.wizard_name %> </p>
-    </div>
-    <div class="col-xs-3 .col-sm-2">
-      <p class="c_label"> School of Magic </p> <p class ="output"><%= @participant.wizard_discipline %> </p>
-    </div>
-    <div class="col-xs-2 .col-sm-1">
-      <p class="c_label"> Level </p> <p class="output"> <%= @participant.wizard_level %> </p>
-    </div>
-  </div>
-</p>
-<div class="row">
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Move</p><p class="output"><%= @participant.wizard_move %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Fight</p><p class="output"><%= @participant.wizard_fight %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Shoot</p><p class="output"><%= @participant.wizard_shoot %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Armour</p><p class="output"><%= @participant.wizard_armour %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Will</p><p class="output"><%= @participant.wizard_will %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Health</p><p class="output"><%= @participant.wizard_health %></p>
-  </div>
 
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <p class="c_label">Wizard Injuries</p>
-    <p class="output"><%= @participant.wizard_injuries %></p>
-  </div>
-  <div class="col-md-6">
-    <p class="c_label">Wizard Inventory</p>
-    <p class="output"><%= @participant.string_for_wizard_inventory %></p>
-  </div>
-</div>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="c_label">Wizard Injuries</p>
+            <p class="output"><%= @participant.wizard_injuries %></p>
+          </div>
+          <div class="col-md-6">
+            <p class="c_label">Wizard Inventory</p>
+            <p class="output"><%= @participant.string_for_wizard_inventory %></p>
+          </div>
+        </div>
+      </div>
 
-</div>
-<% if @participant.apprentice_hired %>
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
-  <div class="row">
-    <div class="col-xs-4 .col-md-2">
-      <p class="c_label"> Apprentice </p> <p class="output"> <%= @participant.apprentice_name %> </p>
     </div>
-  </div>
-</p>
-<div class="row">
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Move</p><p class="output"><%= @participant.apprentice_move %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Fight</p><p class="output"><%= @participant.apprentice_fight %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Shoot</p><p class="output"><%= @participant.apprentice_shoot %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Armour</p><p class="output"><%= @participant.apprentice_armour %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Will</p><p class="output"><%= @participant.apprentice_will %></p>
-  </div>
-  <div class="col-xs-2 .col-sm-1" id="stat-box">
-    <p class="c_label">Health</p><p class="output"><%= @participant.apprentice_health %></p>
-  </div>
 
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <p class="c_label">Apprentice Injuries</p>
-    <p class="output"><%= @participant.apprentice_injuries %></p>
-  </div>
-  <div class="col-md-6">
-    <p class="c_label">Apprentice Inventory</p>
-    <p class="output"><%= @participant.string_for_apprentice_inventory %></p>
-  </div>
-</div>
-</div>
-<% end %>
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+      <% if @participant.apprentice_hired %>
+        <div class="col-xs-12 col-sm-12 col-md-6" id="content-dark">
+        <div id="content">
+          <div class="row">
+            <div class="col-xs-4 col-md-2">
+              <p class="c_label"> Apprentice </p> <p class="output"> <%= @participant.apprentice_name %> </p>
+            </div>
+          </div>
+
+          <div class="row" id="stat-row">
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Move</p><p class="output"><%= @participant.apprentice_move %></p>
+            </div>
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Fight</p><p class="output"><%= @participant.apprentice_fight %></p>
+            </div>
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Shoot</p><p class="output"><%= @participant.apprentice_shoot %></p>
+            </div>
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Armour</p><p class="output"><%= @participant.apprentice_armour %></p>
+            </div>
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Will</p><p class="output"><%= @participant.apprentice_will %></p>
+            </div>
+            <div class="col-xs-2 col-sm-2" id="stat-box">
+              <p class="c_label">Health</p><p class="output"><%= @participant.apprentice_health %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="c_label">Apprentice Injuries</p>
+              <p class="output"><%= @participant.apprentice_injuries %></p>
+            </div>
+            <div class="col-md-6">
+              <p class="c_label">Apprentice Inventory</p>
+              <p class="output"><%= @participant.string_for_apprentice_inventory %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %> 
+
+<!-- SPELLS -->
+<div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
+<div id="content">
   <% if @spells.any? %>
+
+  
+
+  
     <% @spells.each do |spell| %>
       <div id="spell-box">
         <div class="row">
-          <div class="col-xs-4 .col-md-2 .col-sm-3 ">
+          <div class="col-xs-6 col-md-6 col-sm-6 ">
             <p class="c_label">Name</p>
             <p class="output"><%= spell.name %></p>
           </div>
-          <div class="col-xs-4 .col-md-2 .col-sm-3">
+          <div class="col-xs-6 col-md-6 col-sm-6">
             <p class="c_label">Discipline</p>
             <p class="output"><%= spell.discipline %></p>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-4 .col-md-2 .col-sm-3">
+          <div class="col-xs-6 col-md-6 col-sm-6">
             <p class="c_label">Range</p>
             <p class="output"><%= spell.range %></p>
           </div>
-          <div class="col-xs-2 .col-md-1 .col-sm-1" id="cast-box-<%=spell.cast_box_for_casting_value %>">
+          <div class="col-xs-2 col-md-1 col-sm-1" id="cast-box-<%=spell.cast_box_for_casting_value %>">
             <p class="c_label">Cast Value</p>
             <p class="output"><%= spell.string_for_casting_value %></p>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12 .col-md-8 .col-sm-6">
+          <div class="col-xs-12 col-md-12 col-sm-12">
           <p class="output"><%= spell.description %></p>
           </div>
         </div>
       
       <% if @participant.user_id == current_user.id %>
         <div class="row">
-          <div class="col-md-2 .col-sm-2" id="soldier-buttons">
+          <div class="col-md-2 col-sm-2" id="soldier-buttons">
             <%= link_to 'Level Up', edit_spell_path(spell.id, :undo => "false"), class: "btn btn-primary" %>
           </div>
-          <div class="col-md-2 .col-sm-2" id="soldier-buttons">
+          <div class="col-md-2 col-sm-2" id="soldier-buttons">
             <%= link_to 'Undo Level Up', edit_spell_path(spell.id, :undo => "true"), class: "btn btn-primary" %> 
           </div>
-          <div class="col-md-2 .col-sm-2" id="soldier-buttons">
+          <div class="col-md-2 col-sm-2" id="soldier-buttons">
             <%= link_to 'Delete', delete_spell_path(:id => spell.id), method: :delete,
                                            data: { confirm: "You sure?" }, class: "btn btn-primary" %>
           </div>
@@ -171,35 +193,37 @@
     </div>
   <% end %>
 </div>
+</div>
 
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
-
+<div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
+  
         <% if @soldiers.any? %>
         <% @soldiers.each do |soldier| %>
-            <div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+            <div id="content">
               <div class="row" id="soldier-<%=soldier.status%>">
-                <div class="col-xs-4 .col-md-2">
+                <div class="col-xs-4 col-md-2">
                   <p class="c_label"> Name </p> <p class="output"> <%= soldier.name %> </p>
                 </div>
               </div>
-            </p>
-            <div class="row">
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+            
+            <div class="row" id="stat-row">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Move</p><p class="output"><%= soldier.move %></p>
               </div>
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Fight</p><p class="output"><%= soldier.fight %></p>
               </div>
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Shoot</p><p class="output"><%= soldier.shoot %></p>
               </div>
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Armour</p><p class="output"><%= soldier.armour %></p>
               </div>
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Will</p><p class="output"><%= soldier.will %></p>
               </div>
-              <div class="col-xs-2 .col-sm-1" id="stat-box">
+              <div class="col-xs-2 col-sm-1" id="stat-box">
                 <p class="c_label">Health</p><p class="output"><%= soldier.health %></p>
               </div>
 
@@ -216,37 +240,45 @@
             </div>
               <% if @participant.user_id == current_user.id %>
               <div class="row">
-                <div class="col-xs-3 .col-sm-2" id="soldier-buttons">
+                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
                   <%= link_to 'Equip', equip_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
                 </div>
-                <div class="col-xs-3 .col-sm-2" id="soldier-buttons">
+                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
                   <%= link_to  'Injured!', injure_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
                 </div>
-                <div class="col-xs-3 .col-sm-2" id="soldier-buttons">
+                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
                   <%= link_to  'Recovered!', recover_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
                 </div>
-                <div class="col-xs-3 .col-sm-2" id="soldier-buttons">
+                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
                   <%= link_to 'Release', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
                                              data: { confirm: "You sure? This cannot be undone!" }, class: "btn btn-primary" %>
                 </div>
               </div>
               <% end %>
+            </div>
           </div>
           <% end %>
         <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
     <% if @participant.user_id == current_user.id %>
-      <div>
-        <%= link_to 'Hire a Soldier', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
+      <div class="col-xs-12">
+        <%= link_to 'Hire New Troops', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
-</div>
+  </div>
+  
 
 
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
+
+
+<div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
 <% if @items.any? %>
+  <div id="content">
     <% @items.each do |item| %>
+      <div class="col-xs-12 col-sm-12 col-md-12" id="spell-box">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <p class="c_label">Name</p>
           <p class="output"><%= item.name %></p>
         </div>
@@ -259,16 +291,19 @@
       </div>
       <% if @participant.user_id == current_user.id %>
         <div class="row">
-          <div class="col-xs-3 .col-sm-1" id="soldier-buttons">
+          <div class="col-xs-3 col-sm-1" id="soldier-buttons">
             <%= link_to "Sell for #{item.sale_price}", fgp_item_path(item), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
           </div>
-          <div class="col-xs-3 .col-sm-1" id="soldier-buttons">
+          <div class="col-xs-3 col-sm-1" id="soldier-buttons">
             <%= link_to "Discard Item", fgp_item_path(item, :discard => "true"), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
           </div>
         </div>
+        </div>
       <% end %>
     <% end %>
+
   <% end %>
+
   
   <% if @participant.user_id == current_user.id %>
     <div>
@@ -277,38 +312,38 @@
 
     </div>
   <% end %>
-</div>
+  </div>
+  </div>
 
-
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">
-  <p class="c_label">Base of Operations</p>
-  <% if @base != nil %>
-    <p class="c_label">Location </p>
-    <p class="output"> <%= @base.location %></p>
-    <p class="c_label">Benefits </p>
-    <p class="output"> <%= @base.effects %></p>
-    <% if @participant.user_id == current_user.id %>
-     <%= link_to 'Change', edit_base_path(:id => @base.id), class: "btn btn-lg btn-primary" %> 
-     <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
-                                         data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
-    <% end %>
+<div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
+<div id="content">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <p class="c_label">Base of Operations</p>
+      <% if @base != nil %>
+        <p class="c_label">Location </p>
+        <p class="output"> <%= @base.location %></p>
+        <p class="c_label">Benefits </p>
+        <p class="output"> <%= @base.effects %></p>
+        <% if @participant.user_id == current_user.id %>
+         <%= link_to 'Change', edit_base_path(:id => @base.id), class: "btn btn-lg btn-primary" %> 
+         <%= link_to 'Remove', delete_base_path(:id => @base.id), method: :delete,
+                                             data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
+        <% end %>
+    </div>
+  </div>
   <% else %>
     <% if @participant.user_id == current_user.id %>
-      <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
+        </div>
+      </div>
     <% end %>
   <% end %> 
 </div>
-
-<div class="col-xs-12 .col-sm-6 .col-md-8", id="content">  
-
-  <div style="margin-top:20px">
-    <% if @participant.user_id == current_user.id %>
-     <%= link_to "Update this Warband", edit_frost_grave_participant_path(@participant.id), class: "btn btn-lg btn-primary" %>
-     <%= link_to "Delete this Warband", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
-                                           data: { confirm: "You sure?" }, class: "btn btn-lg btn-primary" %>
-    <% end %>
-  </div>
 </div>
+
 
 <!-- Modal XP-->
 <div class="modal fade" id="xp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -21,8 +21,8 @@ body {
 #content{
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 15px 15px 15px 15px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin: 5px;
 }
 
 #spell-box{
@@ -91,6 +91,11 @@ body {
   border-style: solid;
   border-color: #fff;
   border-width: 5px;
+  width: 61px;
+}
+
+#stat-row{
+  margin-left: 10px;
 }
 
 #soldier-buttons{
@@ -133,6 +138,16 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  color: #fff;
+
+}
+
+#header-l{
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 2em;
+  letter-spacing: -2px;
+  color: #fff;
 }
 
 h2 {
@@ -156,6 +171,12 @@ p {
 }
 .output {
   color: #506270;
+  font-size: 1.2em;
+  margin-bottom: 0px;
+}
+
+.output-dark {
+  color: #fff;
   font-size: 1.2em;
   margin-bottom: 0px;
 }
