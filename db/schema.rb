@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013185619) do
+ActiveRecord::Schema.define(version: 20151016193229) do
 
   create_table "base_of_operations", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20151013185619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "class_name"
+    t.string   "status"
   end
 
   create_table "spells", force: :cascade do |t|

@@ -221,7 +221,7 @@
       <% if @soldiers.any? %>
         <% @soldiers.each do |soldier| %>
             <div class="col-xs-12 col-sm-6 col-md-6">
-            <div id="content">
+            <div id="content-<%=soldier.status%>">
               <div class="row" id="soldier-<%=soldier.status%>">
                 <div class="col-xs-6 col-md-6">
                   <p class="c_label"> Name </p> <p class="output"> <%= soldier.name %> </p>
