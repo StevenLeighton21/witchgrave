@@ -2,25 +2,26 @@
 <p id="notice"><%= notice %></p>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="content-dark">
   <div class="row">
-    <div class="col-xs-4 col-sm-7 col-md-4">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <h1 id="header-l">
         <%= @participant.name %>
       </h1>
     </div>
-    
-    <div class="col-xs-2 col-sm-1 col-md-2">
+    </div>
+    <div class="row">
+    <div class="col-xs-3 col-sm-2 col-md-1">
       <p class="c_label"> Gold Cache </p>  <p class="output-dark"> <%= @participant.gold_cache %></p>
     </div>
     <% if current_user.id == @participant.user_id %>
-      <div class="col-xs-2 col-sm-1 col-md-2" id="add-box">
+      <div class="col-xs-3 col-sm-2 col-md-1" id="add-box">
         <p class="c_label"> Add Gold </p>
         <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, show_add_gold_path(:id => @participant.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#gold-modal', class: "btn btn-default" }%>
       </div>
     
-      <div class="col-xs-2 col-sm-1 col-md-2">
+      <div class="col-xs-3 col-sm-2 col-sm-offset-4 col-md-1 col-md-offset-8">
        <%= link_to "Update", edit_frost_grave_participant_path(@participant.id), class: "btn btn-primary" %>
       </div>
-      <div class="col-xs-2 col-sm-1 col-md-2">
+      <div class="col-xs-3 col-sm-2 col-md-1">
          <%= link_to "Delete", delete_frostgrave_participant_path(:id => @participant.id), method: :delete,
                                      data: { confirm: "You sure?" }, class: "btn btn-primary" %>
       </div>
@@ -136,16 +137,22 @@
 <div id="content">
   <% if @spells.any? %>
 
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
+    <% @spells.each_with_index do |spell, index| %>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading<%=index%>">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=index%>" aria-expanded="false" aria-controls="collapse<%=index%>">
+          <%= spell.name %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%=index%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%=index%>">
+      <div class="panel-body">
 
-  
-    <% @spells.each do |spell| %>
-      <div id="spell-box">
+      
         <div class="row">
-          <div class="col-xs-6 col-md-6 col-sm-6 ">
-            <p class="c_label">Name</p>
-            <p class="output"><%= spell.name %></p>
-          </div>
           <div class="col-xs-6 col-md-6 col-sm-6">
             <p class="c_label">Discipline</p>
             <p class="output"><%= spell.discipline %></p>
@@ -166,6 +173,7 @@
           <p class="output"><%= spell.description %></p>
           </div>
         </div>
+        
       
       <% if @participant.user_id == current_user.id %>
         <div class="row">
@@ -182,17 +190,22 @@
         </div>
       <% end %>
       </div>
+      </div>
+      </div>
     <% end %>
+    </div>
+    </div>
   <% end %>
-
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
   <% if @participant.user_id == current_user.id %>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-5" >
         <%= link_to 'Learn a new spell', create_spell_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
       </div>
     </div>
   <% end %>
-</div>
+
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
@@ -260,9 +273,9 @@
           <% end %>
         <% end %>
   </div>
-  <div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
+  <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-5" id="content-dark">
     <% if @participant.user_id == current_user.id %>
-      <div class="col-xs-12">
+      <div>
         <%= link_to 'Hire New Troops', new_fgp_soldier_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
@@ -275,14 +288,19 @@
 <div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
 <% if @items.any? %>
   <div id="content">
-    <% @items.each do |item| %>
-      <div class="col-xs-12 col-sm-12 col-md-12" id="spell-box">
-      <div class="row">
-        <div class="col-sm-12">
-          <p class="c_label">Name</p>
-          <p class="output"><%= item.name %></p>
-        </div>
-      </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% @items.each_with_index do |item, index| %>
+       <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading<%=index%>">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=index%>" aria-expanded="false" aria-controls="collapse<%=index%>">
+          <%= item.name %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%=index%>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%=index%>">
+      <div class="panel-body">
+
       <div class="row">
         <div class="col-sm-12">
           <p class="c_label">Description</p>
@@ -291,29 +309,42 @@
       </div>
       <% if @participant.user_id == current_user.id %>
         <div class="row">
-          <div class="col-xs-3 col-sm-1" id="soldier-buttons">
+          <div class="col-xs-4 col-sm-2" id="soldier-buttons">
             <%= link_to "Sell for #{item.sale_price}", fgp_item_path(item), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
           </div>
-          <div class="col-xs-3 col-sm-1" id="soldier-buttons">
+          <div class="col-xs-4 col-sm-2" id="soldier-buttons">
             <%= link_to "Discard Item", fgp_item_path(item, :discard => "true"), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
           </div>
+        </div>
+        </div>
         </div>
         </div>
       <% end %>
     <% end %>
 
+
+
+</div>
+</div>
   <% end %>
+
+</div>
+
+
 
   
   <% if @participant.user_id == current_user.id %>
-    <div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-3 col-sm-offset-3 col-md-2 col-md-offset-4" id="content-dark">
       <%= link_to "Loot an Item", new_fgp_item_path(:fgp_id => @participant.id, :looted => "true"), class: "btn btn-lg btn-primary" %>
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 " id="content-dark">
       <%= link_to "Purchase an Item", new_fgp_item_path(:fgp_id => @participant.id, :looted => "false"), class: "btn btn-lg btn-primary" %>
-
+      </div>
     </div>
   <% end %>
   </div>
-  </div>
+  
 
 <div class="col-xs-12 col-sm-12 col-md-12" id="content-dark">
 <div id="content">
@@ -335,7 +366,7 @@
   <% else %>
     <% if @participant.user_id == current_user.id %>
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
           <%= link_to 'Establish a base', create_base_path(:fgp_id => @participant.id), class: "btn btn-lg btn-primary"%>
         </div>
       </div>
