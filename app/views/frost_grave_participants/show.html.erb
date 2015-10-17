@@ -273,20 +273,26 @@
               </div>
             </div>
               <% if @participant.user_id == current_user.id %>
-              <div class="row">
-                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
-                  <%= link_to 'Equip', equip_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
+                <div class="row">
+                  <div class="col-xs-3 col-sm-4" >
+                    <%= link_to 'Equip', equip_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 ">
+                    <%= link_to  'Injured!', injure_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
+                  </div>
+                  <div class="col-xs-4 col-sm-4">
+                    <%= link_to  'Recovered!', recover_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
+                  </div>
                 </div>
-                <div class="col-xs-3 col-sm-2" id="soldier-buttons">
-                  <%= link_to  'Injured!', injure_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
-                </div>
-                <div class="col-xs-3 col-sm-3" id="soldier-buttons">
-                  <%= link_to  'Recovered!', recover_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
-                </div>
-                <div class="col-xs-3 col-sm-3" id="soldier-buttons">
-                  <%= link_to 'Release', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
-                                             data: { confirm: "You sure? This cannot be undone!" }, class: "btn btn-primary" %>
-                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6" >
+                    <%= link_to 'Release!', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
+                                               data: { confirm: "You sure? This cannot be undone!" }, class: "btn btn-primary" %>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 " >
+                    <%= link_to 'Died!', fgp_soldier_path(:id => soldier.id, :sell => "false"), method: :delete,
+                                               data: { confirm: "You sure? This cannot be undone!" }, class: "btn btn-primary" %>
+                  </div>
               </div>
               <% end %>
             </div>
