@@ -116,7 +116,7 @@ class FrostGraveParticipantsController < ApplicationController
     #level = xp / 100
     current_cache = @participant.gold_cache.to_i
 
-    params[:frost_grave_participant][:wizard_level] = level.floor + 1
+    #params[:frost_grave_participant][:wizard_level] = level.floor + 1
     
     params[:frost_grave_participant][:apprentice_move] = params[:frost_grave_participant][:wizard_move]
     params[:frost_grave_participant][:apprentice_armour] = params[:frost_grave_participant][:wizard_armour]
