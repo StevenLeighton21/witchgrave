@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @campaigns = @user.campaigns.paginate(page: params[:page])
+    @warbands = FrostGraveParticipant.where(user_id: @user.id).paginate(page: params[:page])
   end
 
   def admin_user
