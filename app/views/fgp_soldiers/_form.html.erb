@@ -17,12 +17,8 @@
   </div>
 
 <div class="textarea">
-  <%= f.label :class, 'Select Soldier Type' %>
+  <%= f.label :stat_modified, 'Select Soldier Type' %>
   <%= collection_select :fgp_soldier, :class_name, @default_soldiers, :class_name, :class_name_with_cost, {prompt: true}%>
-</div>
-
-<div class="js-dependent-fields" data-select-id="spell_discipline" data-option-value="Chronomancer">
-
 </div>
 
 <%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>

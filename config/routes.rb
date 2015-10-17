@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :fgp_items
   resources :fgp_soldiers
   resources :base_of_operations
+  resources :injuries
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

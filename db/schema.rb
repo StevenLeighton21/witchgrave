@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016193229) do
+ActiveRecord::Schema.define(version: 20151017114311) do
 
   create_table "base_of_operations", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
@@ -167,6 +167,18 @@ ActiveRecord::Schema.define(version: 20151016193229) do
   add_index "frost_grave_participants", ["campaigns_id"], name: "index_frost_grave_participants_on_campaigns_id"
   add_index "frost_grave_participants", ["user_id", "campaigns_id"], name: "index_frost_grave_participants_on_user_id_and_campaigns_id"
   add_index "frost_grave_participants", ["user_id"], name: "index_frost_grave_participants_on_user_id"
+
+  create_table "injuries", force: :cascade do |t|
+    t.integer  "frost_grave_participant_id"
+    t.string   "name"
+    t.integer  "value"
+    t.string   "stat_modified"
+    t.string   "caster_affected"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "injuries", ["frost_grave_participant_id"], name: "index_injuries_on_frost_grave_participant_id"
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"

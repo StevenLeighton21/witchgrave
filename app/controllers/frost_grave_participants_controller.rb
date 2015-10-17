@@ -12,6 +12,29 @@ class FrostGraveParticipantsController < ApplicationController
   ['Crossbow']
  ]
 
+ STATS = [
+  ['Move'],
+  ['Fight'],
+  ['Shoot'],
+  ['Armour'],
+  ['Will'],
+  ['Health'],
+ ]
+
+ MOD_VALUES = [
+  [-5],
+  [-4],
+  [-3],
+  [-2],
+  [-1],
+  [0],
+  [1],
+  [2],
+  [3],
+  [4],
+  [5],
+ ]
+
   def new
     @participant = FrostGraveParticipant.new
     @budget = 500
@@ -89,11 +112,14 @@ class FrostGraveParticipantsController < ApplicationController
     @participant = FrostGraveParticipant.find(params[:id])
 
 
-    xp = params[:frost_grave_participant][:wizard_xp].to_i
-    level = xp / 100
+    #xp = params[:frost_grave_participant][:wizard_xp].to_i
+    #level = xp / 100
     current_cache = @participant.gold_cache.to_i
 
     params[:frost_grave_participant][:wizard_level] = level.floor + 1
+    
+    params[:frost_grave_participant][:apprentice_move] = params[:frost_grave_participant][:wizard_move]
+    params[:frost_grave_participant][:apprentice_armour] = params[:frost_grave_participant][:wizard_armour]
 
     wf = params[:frost_grave_participant][:wizard_fight]
     af = wf.to_i - 2
@@ -147,7 +173,7 @@ class FrostGraveParticipantsController < ApplicationController
     @participant = FrostGraveParticipant.find(params[:id])
     @campaign = @participant.campaign
     @participant.delete
-    @participant.destroy
+    #@participant.destroy
     flash[:success] = "Warband deleted"
     redirect_to campaign_path(@campaign.id)
   end

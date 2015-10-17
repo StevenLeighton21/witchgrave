@@ -56,33 +56,38 @@
 
       <div class="row" id="stat-row">
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Move</p><p class="output"><%= @participant.wizard_move %></p>
+          <p class="c_label">Move</p><p class="output"><%= @participant.string_for_stat("Wizard", "Move") %></p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Fight</p><p class="output"><%= @participant.wizard_fight %></p>
+          <p class="c_label">Fight</p><p class="output"><%= @participant.string_for_stat("Wizard", "Fight") %></p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Shoot</p><p class="output"><%= @participant.wizard_shoot %></p>
+          <p class="c_label">Shoot</p><p class="output"><%= @participant.string_for_stat("Wizard", "Shoot") %></p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Armour</p><p class="output"><%= @participant.wizard_armour %></p>
+          <p class="c_label">Armour</p><p class="output"><%= @participant.string_for_stat("Wizard", "Armour") %></p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Will</p><p class="output"><%= @participant.wizard_will %></p>
+          <p class="c_label">Will</p><p class="output"><%= @participant.string_for_stat("Wizard", "Will") %></p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-          <p class="c_label">Health</p><p class="output"><%= @participant.wizard_health %></p>
+          <p class="c_label">Health</p><p class="output"><%= @participant.string_for_stat("Wizard", "Health") %></p>
         </div>
       </div>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-10">
             <p class="c_label">Wizard Injuries</p>
-            <p class="output"><%= @participant.wizard_injuries %></p>
+            <p class="output"><%= @participant.string_for_wizard_injuries %></p>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-2">
+            <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Wizard") %>
+          </div>
+          <div class="col-md-10">
             <p class="c_label">Wizard Inventory</p>
             <p class="output"><%= @participant.string_for_wizard_inventory %></p>
+          </div>
+          <div class="col-md-2">
           </div>
         </div>
       </div>
@@ -100,30 +105,35 @@
 
           <div class="row" id="stat-row">
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Move</p><p class="output"><%= @participant.apprentice_move %></p>
+              <p class="c_label">Move</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Move") %></p>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Fight</p><p class="output"><%= @participant.apprentice_fight %></p>
+              <p class="c_label">Fight</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Fight") %></p>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Shoot</p><p class="output"><%= @participant.apprentice_shoot %></p>
+              <p class="c_label">Shoot</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Shoot") %></p>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Armour</p><p class="output"><%= @participant.apprentice_armour %></p>
+              <p class="c_label">Armour</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Armour") %></p>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Will</p><p class="output"><%= @participant.apprentice_will %></p>
+              <p class="c_label">Will</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Will") %></p>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2" id="stat-box">
-              <p class="c_label">Health</p><p class="output"><%= @participant.apprentice_health %></p>
+              <p class="c_label">Health</p><p class="output"><%= @participant.string_for_stat("Apprentice", "Health") %></p>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
               <p class="c_label">Apprentice Injuries</p>
-              <p class="output"><%= @participant.apprentice_injuries %></p>
+              <p class="output"><%= @participant.string_for_apprentice_injuries %></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
+              <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Apprentice") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
               <p class="c_label">Apprentice Inventory</p>
               <p class="output"><%= @participant.string_for_apprentice_inventory %></p>
             </div>

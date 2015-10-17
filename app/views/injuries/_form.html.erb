@@ -1,0 +1,36 @@
+<%= form_for(@injury) do |f| %>
+  <% if @injury.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@injury.errors.count, "error") %> prohibited this warband from being saved:</h2>
+
+      <ul>
+      <% @injury.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+<div class="textarea">
+  <%= f.label :stat_modified, 'Stat Affected' %>
+  <%= select :injury, :stat_modified, FrostGraveParticipantsController::STATS, {prompt: true}%>
+</div>
+
+  <div class="field">
+    <%= f.label :value, 'Affected By: ' %>
+    <%= select :injury, :value, FrostGraveParticipantsController::MOD_VALUES, {prompt: true}%>
+  </div>
+
+<%= f.hidden_field :frost_grave_participant_id, :value => params[:fgp_id] %>
+<%= f.hidden_field :caster_affected, :value => params[:caster_affected] %>
+
+ <div class="actions">
+      <%= f.submit "Add Injury", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

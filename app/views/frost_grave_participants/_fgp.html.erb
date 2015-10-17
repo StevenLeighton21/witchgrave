@@ -64,10 +64,7 @@
   <%= f.text_field :wizard_inventory_5 %>
 </div>
 
-<div class="field">
-  <%= f.label :wizard_injuries, 'Wizard Injuries'%>
-  <%= f.text_area :wizard_injuries %>
-</div>
+
 
 <% if @participant.apprentice_hired == true %>
   <div class="field">
@@ -75,18 +72,6 @@
     <%= f.text_field :apprentice_name %>
   </div>
 
-  <div>
-    <table>
-    <tr>
-      <th><%= f.label :apprentice_move, 'Move'%></th>
-      <th><%= f.label :apprentice_armour, 'Armour'%></th>
-    </tr>
-      <tr>
-        <td> <%= f.text_field :apprentice_move %></td>
-        <td> <%= f.text_field :apprentice_armour %></td>
-      </tr>
-    </table>
-  </div>
 
   <div class="field">
     <%= f.label :apprentice_injuries, 'Apprentice Injuries'%>
