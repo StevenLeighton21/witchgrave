@@ -11,6 +11,10 @@
     <div class="row">
     <div class="col-xs-3 col-sm-2 col-md-1">
       <p class="c_label"> Gold Cache </p>  <p class="output-dark"> <%= @participant.gold_cache %></p>
+      <!-- Useful dev thing
+      <p class="c_label"> Gold Earned </p>  <p class="output-dark"> <%= @participant.gold_earned %></p>
+      <p class="c_label"> Gold Spent </p>  <p class="output-dark"> <%= @participant.gold_spent %></p>
+      !-->
     </div>
     <% if current_user.id == @participant.user_id %>
       <div class="col-xs-3 col-sm-2 col-md-1" id="add-box">
@@ -80,9 +84,11 @@
             <p class="c_label">Wizard Injuries</p>
             <p class="output"><%= @participant.string_for_wizard_injuries %></p>
           </div>
-          <div class="col-md-2">
-            <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Wizard") %>
-          </div>
+          <% if current_user.id == @participant.user_id %>
+            <div class="col-md-2">  
+              <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Wizard") %>
+            </div>
+          <% end %>
           <div class="col-md-10">
             <p class="c_label">Wizard Inventory</p>
             <p class="output"><%= @participant.string_for_wizard_inventory %></p>
@@ -128,9 +134,11 @@
               <p class="c_label">Apprentice Injuries</p>
               <p class="output"><%= @participant.string_for_apprentice_injuries %></p>
             </div>
-            <div class="col-md-2">
-              <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Apprentice") %>
-            </div>
+            <% if current_user.id == @participant.user_id %>
+              <div class="col-md-2">
+                <%= link_to 'Injured', new_injury_path(:fgp_id => @participant.id, :caster_affected => "Apprentice") %>
+              </div>
+            <% end %>
           </div>
           <div class="row">
             <div class="col-md-12">
@@ -273,7 +281,7 @@
               </div>
             </div>
               <% if @participant.user_id == current_user.id %>
-                <div class="row">
+                <div class="row" id="soldier-buttons">
                   <div class="col-xs-3 col-sm-4" >
                     <%= link_to 'Equip', equip_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
                   </div>
@@ -284,7 +292,7 @@
                     <%= link_to  'Recovered!', recover_soldier_path(:id => soldier.id), class: "btn btn-primary" %>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" id="soldier-buttons">
                   <div class="col-xs-6 col-sm-6" >
                     <%= link_to 'Release!', fgp_soldier_path(:id => soldier.id, :sell => "true"), method: :delete,
                                                data: { confirm: "You sure? This cannot be undone!" }, class: "btn btn-primary" %>

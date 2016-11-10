@@ -18,6 +18,7 @@ class FgpSoldiersController < ApplicationController
     @fgp_soldier = FgpSoldier.find(params[:id])
     @default_soldiers = Soldier.all
     if @fgp_soldier.update_attributes(fgp_soldier_params.merge(:skip_callbacks => true))
+      @fgp_soldier.save
       flash[:success] = "Soldier updated"
       redirect_to frost_grave_participant_path(@fgp_soldier.frost_grave_participant_id)
     else
@@ -56,7 +57,7 @@ class FgpSoldiersController < ApplicationController
     @fgp_soldier = @participant.fgp_soldiers.build(@default_soldiers.find_by_class_name(params[:fgp_soldier][:class_name]).clone.attributes)
     @fgp_soldier.id = params[:fgp_soldier][:id]
     @fgp_soldier.name = params[:fgp_soldier][:name]
-    if @participant.save
+    if @participant.save(:skip_callbacks => false)
       flash[:success] = "Soldier hired"
       redirect_to frost_grave_participant_path(@participant.id)
     else
@@ -69,6 +70,7 @@ class FgpSoldiersController < ApplicationController
     @participant = @fgp_soldier.frost_grave_participant
     @fgp_soldier.sale_price = params[:sell] == "true" ? @fgp_soldier.cost : 0
     @fgp_soldier.destroy
+    @participant.save
     flash[:success] = "Soldier no longer part of the warband..."
     redirect_to frost_grave_participant_path(@participant.id)
   end

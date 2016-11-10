@@ -1,5 +1,7 @@
 <div class="col-xs-12 .col-sm-6 .col-md-8", id="content">  
-  <h1>Help!?</h1>
+  <h2>Help!?</h2>
+
+  <p> Please be aware this site is currently in an alpha test state. Any feedback you can provide will be apprectiated!</p>
 
   <h2>
     What to do:
@@ -14,9 +16,10 @@
   <p> Click the warband's name to view it in detail, where you will be able to/can edit/delete/update progress on this campaign</p>
 
   <h2> Updating your warband </h2>
-  <p>Currently you have a lot of freedom in what you update, it's up to you to update the running totals of gold earned and gold spent, adding items and soldiers as you go. It's also up to you to keep track of your spells and your choices when levelling up, though the display will calculate your curernt wizard level based on XP earned and current gold cache based on total earned - total spent. </p>
-  <p>It's also up to you to calculate stats and split stats based on weapon effects, for instance, having a 2H weapon will not add +2 to your FIGHT on the display, and don't try to enter split stats for wizards as it will probably break the apprentice stats.</p>
-  <p>Note that this also applies to injuries, there is a field for you to record injuries for your wizard and apprentice but you will need to keep track of their effects.</p>
+  <p>Currently you have a lot of freedom in what you update, it's up to you to update the running totals of gold earned and gold spent, adding items and soldiers as you go. It's also up to you to keep track of your spells and your choices when levelling up, though the display will calculate your curernt wizard level based on XP earned and current gold cache based on total earned - total spent. You can't currently remove XP if you make a mistake. You can directly edit your wizard stats and the apprentice stats are derived from those, you can also manage their weapons (though this won't change your gold totals after initial creation) and you can add free text for their equipped items (I believe you need to equip anything before a game in order to use it, like a scroll or potion).</p>
+  <p>The system is clever enough to calculate your stats (and the derived apprentice stats) and to display split stats based on your injuries, adding injuries should be fairly straightforward, if you have an injury that lowers your Move stat by 2, select 'Move' and '-2' when you add the injury and the display will do the rest.</p>
+  <p>You can add a base of operations and you can buy/sell mercenaries and items. If you release a mercenary, it's cost will be added back to your cache. This is just to make it easier to undo an incorrect buy and will probably go away. Injured will clearly mark your mercenary as injured, and the died! button will remove them. You can add free/summoned things as well, they just cost 0 gold.</p>
+  <p> You can add items to a mercenary, it doesn't remove the item from your inventory or anything and is something you need to manage yourself currently, adding the item to the mercenary just provides an easy reference. Creating items will require a cost, which will be directly removed from your current gold cache. Selling an item will return half of whatever cost you entered for it. Between this and the add gold button, it's possible to correct any mistakes in your gold total by adding gold/spending gold. </p>
 
   <h2> What do do when you inevitably find a bug</h2>
   <p> Check the TODO list first, because if it's on there it's more of an improvement than a bug. Should your search prove fruitless...</p>
@@ -25,15 +28,14 @@
 
   <h2>TODO List in order of importance</h2>
   <ul>
-    <li>Closed campaign entry, either through creator - set password or user invite.</li>
   	<li> Warband stuff: <ul>
-      <li> Injuries and items applying their effects on the warband screen - Just removing injuries. </li>
-      <li> Hiring appears to not cost gold?</li>
+      <li> Can't remove injuries as yet. </li>
       <li> Base upgrades.</li>
-      <li> There are a metric tonne of validations to add. Go ahead and enter a giant string for campaign name or something. Actually don't.</li>
-      <li>+++ At this point, we can go into a beta test +++</li>
+      <li> More validations for actions/input etc across the board. Things should currently be sanitized but quite probably breakable if you try hard enough.</li>
+      <li> - - Nice to Have list - - </li>
       <li>Would also like to have a system where you equip characters/soldiers with items from the item stash rather than manually doing all the record keeping.</li>
       <li> Validate max warband size (currently limited only by your cache) </li>
+      <li> Validate purchasing failing if it would take your gold below 0, and remove options to purchase further if below zero. Currently requires players to self manage. </li>
     </ul></li>
     <li>Idea to do more 'controlled' form of update along with a detailed update. So you can do a detailed update to correct creation mistakes, or a 'game night' update where you only update [gold earned] [xp earned] [level up options] [items buy/sell/equip/stash] [death/injury] this might require a fairly large rework, maybe not. </li>
   	<li>Warband detail view visuals</li>

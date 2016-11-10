@@ -64,7 +64,7 @@ class FrostGraveParticipantsController < ApplicationController
     gold = base_gold + gold
     @participant.update_attribute(:gold_earned, gold)
     current_cache = @participant.gold_cache.to_i
-    new_cache = gold - @participant.gold_spent.to_i
+    new_cache = @participant.gold_earned.to_i - @participant.gold_spent.to_i
 
     if @participant.update_attribute(:gold_cache, new_cache)
       flash[:success] = "Gold added"
