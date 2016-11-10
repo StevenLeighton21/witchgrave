@@ -9,7 +9,8 @@
     <li>
       
       <%= link_to campaign.name, campaign %>
-      </li>
+      <p> Created by: <%= user_name_with_id(campaign.user_id) %> on: <%= campaign.created_at %> </p>
+     </li>
   <% end %>
 </ul>
 
