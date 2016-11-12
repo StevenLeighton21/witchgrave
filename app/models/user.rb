@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
 	has_many :campaigns, dependent: :destroy
+  has_many :tournaments, dependent: :destroy
 
 	before_save { self.email = email.downcase }
 	validates :name, length: {maximum: 128},

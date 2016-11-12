@@ -1,0 +1,9 @@
+<li id="tournament-<%= tournament.id %>">
+  
+  <p>Created by: <%= link_to tournament.user.name, tournament.user %> on <%= tournament.created_at %></p>
+  <p>Name: <%= link_to tournament.name, tournament %></p>
+  <p>Type: Swiss - Number of Rounds: 0</p>
+  <p> Final Standings: TBC </p>
+  
+  <%= link_to 'Sign up', new_tournament_participant_path(:t_id => tournament.id), class: "btn btn-default" %> 
+</li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017114311) do
+ActiveRecord::Schema.define(version: 20161112141018) do
 
   create_table "base_of_operations", force: :cascade do |t|
     t.integer  "frost_grave_participant_id"
@@ -215,6 +215,33 @@ ActiveRecord::Schema.define(version: 20151017114311) do
 
   add_index "spells", ["frost_grave_participant_id", "created_at"], name: "index_spells_on_frost_grave_participant_id_and_created_at"
   add_index "spells", ["frost_grave_participant_id"], name: "index_spells_on_frost_grave_participant_id"
+
+  create_table "tournament_participants", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "tournament_id"
+    t.string   "name"
+    t.string   "team_name"
+    t.integer  "total_strength_rating"
+    t.integer  "final_standing"
+    t.integer  "wins"
+    t.integer  "losses"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "tournament_participants", ["tournament_id"], name: "index_tournament_participants_on_tournament_id"
+  add_index "tournament_participants", ["user_id"], name: "index_tournament_participants_on_user_id"
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "num_rounds"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tournaments", ["user_id", "created_at"], name: "index_tournaments_on_user_id_and_created_at"
+  add_index "tournaments", ["user_id"], name: "index_tournaments_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

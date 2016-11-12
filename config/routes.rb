@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tournaments/new'
+
   get 'sessions/new'
 
   get 'static_pages/home'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   resources :fgp_soldiers
   resources :base_of_operations
   resources :injuries
+  resources :tournaments
+  resources :tournament_participants
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -44,7 +48,10 @@ Rails.application.routes.draw do
   get    'equip_soldier'         => 'fgp_soldiers#edit'
   get    'create_fg_participant' => 'frost_grave_participant#new'
   get    'create_campaigns'      => 'campaigns#new'
+  get    'create_tournaments'      => 'tournaments#new'
+  get    'tournament_participants' => 'tournament_participants#new'
   get    'edit_campaign'         => 'campaigns#edit'
   delete 'delete_campaign'       => 'campaigns#destroy'
+  delete 'delete_tournament'     => 'tournaments#destroy'
   delete 'delete_frostgrave_participant' => 'frost_grave_participants#destroy'
 end

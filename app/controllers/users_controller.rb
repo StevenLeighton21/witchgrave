@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @campaigns = @user.campaigns.paginate(page: params[:page])
     @warbands = FrostGraveParticipant.where(user_id: @user.id).paginate(page: params[:page])
+    @tournaments = Tournament.where(user_id: @user.id).paginate(page: params[:page])
+    @tournament_participations = TournamentParticipant.where(user_id: @user.id).paginate(page: params[:page])
   end
 
   def admin_user
@@ -71,6 +73,10 @@ class UsersController < ApplicationController
       end
     end
 
+  def is_own_profile? 
+    return @user.id == current_user.id
+  end
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
