@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @campaigns = @user.campaigns.paginate(page: params[:page])
     @warbands = FrostGraveParticipant.where(user_id: @user.id).paginate(page: params[:page])
-    @tournaments = Tournament.where(user_id: @user.id).paginate(page: params[:page])
-    @tournament_participations = TournamentParticipant.where(user_id: @user.id).paginate(page: params[:page])
+    #@tournaments = Tournament.where(user_id: @user.id).paginate(page: params[:page])
+    #@tournament_participations = TournamentParticipant.where(user_id: @user.id).paginate(page: params[:page])
   end
 
   def admin_user
